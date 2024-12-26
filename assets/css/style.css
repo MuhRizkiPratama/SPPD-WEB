@@ -1,0 +1,33 @@
+*{
+    font-family: "Nunito";
+}
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    height: 55px;
+}
+aside{
+    position: fixed; 
+    width: 0; 
+    z-index: 1; 
+    top: 0; 
+    left: 0;
+    height: 100%;
+    background-color: #f2f2f2; 
+    overflow-x: hidden; 
+    transition: 0.5s;
+}
+.dropdown-menu a:active {
+    color: black;
+    background-color: white;
+}
+.card-login{
+    width: 45vh;
+}
+.footer {
+    bottom: 0;
+    background-color: #f2f2f2;
+}
