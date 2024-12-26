@@ -1,5 +1,5 @@
 <?php
-    require "../../config/database.php";
+    require "../../config/connection.php";
 
     function showPegawai(){
         global $database;

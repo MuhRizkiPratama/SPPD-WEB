@@ -7,6 +7,4 @@
         $no_telepon = $_POST['no_telepon'];
         $alamat = $_POST['alamat'];
     }
-
-    
 ?>
