@@ -3,22 +3,31 @@
 }
 header{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
     background-color: #f2f2f2;
-    height: 55px;
+    height: 60px;
 }
 aside{
     position: fixed; 
-    width: 0; 
-    z-index: 1; 
     top: 0; 
+    width: 0;
     left: 0;
     height: 100%;
     background-color: #f2f2f2; 
     overflow-x: hidden; 
     transition: 0.5s;
+}
+aside.active{
+    width: 200px;
+}
+header, main, footer {
+    transition: 0.5s;
+}
+header.active, main.active, footer.active{
+    margin-left: 200px;
 }
 .dropdown-menu a:active {
     color: black;

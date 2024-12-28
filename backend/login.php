@@ -1,5 +1,5 @@
 <?php
-    require "../config/database.php";
+    require "../config/connection.php";
 
     if(isset($_POST['login'])){
         $no_badge = $_POST['no_badge'];

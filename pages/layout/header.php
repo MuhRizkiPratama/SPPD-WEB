@@ -12,6 +12,7 @@
     <!-- CSS DataTables -->
     <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
 
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Nunito Fonts -->
@@ -19,8 +20,8 @@
     <title>Sistem Surat Perintah Perjalanan Dinas</title>
 </head>
 <body>
-    <header id="header">
-        <button class="btn" id="toggleSidebar"><i class="bi bi-list"></i></button>
+    <header>
+        <button class="btn btn-sm btn-success" id="toggleSidebar"><i class="bi bi-list"></i></button>
         <div class="d-flex align-items-center gap-2">
             <img src="../../assets/images/Logo Kikc.png" alt="Logo Kikc" width="55" height="25">
         </div>
