@@ -9,7 +9,7 @@
                     <h5 class="text-center">Penempatan</h5>
                 </div>
                 <div class="card-body">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
+                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
                         <i class="bi bi-plus"></i>
                     </button>
                     <div class="table-responsive">
@@ -26,16 +26,64 @@
                                     $no = 1;
                                     $queryPenempatan = "SELECT * FROM penempatan";
                                     $resultPenempatan = mysqli_query($database, $queryPenempatan);
-                                    while ($datat = mysqli_fetch_assoc($resultPenempatan)){
+                                    while ($data = mysqli_fetch_assoc($resultPenempatan)){
                                 ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td><?= $datat['penempatan']; ?></td>
+                                    <td><?= $data['penempatan']; ?></td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#updateModal"><i class="bi bi-pencil-square"></i></button>
-                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
+                                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#updateModal<?= $data['id'] ?>"><i class="bi bi-pencil-square"></i></button>
+                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $data['id'] ?>"><i class="bi bi-trash"></i></button>
                                     </td>
                                 </tr>
+
+                                <!-- Modal Update penempatan -->
+                                <div class="modal fade" id="updateModal<?= $data['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <form action="../../backend/penempatan/update.php" method="post">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Penempatan</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <input type="hidden" name="id_penempatan" value="<?= $data['id']; ?>">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="penempatan">penempatan :</label>
+                                                        <input class="form-control" type="text" name="penempatan" id="penempatan" value="<?= $data['penempatan']; ?>" required>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" name="update_penempatan" class="btn btn-primary">Update</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- Modal Delete penempatan -->
+                                <div class="modal fade" id="deleteModal<?= $data['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <form action="../../backend/penempatan/delete.php" method="post">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Penempatan</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <input type="hidden" name="id_penempatan" value="<?= $data['id']; ?>">
+                                                    <p>Apakah Anda yakin ingin menghapus penempatan <strong><?= $data['penempatan']; ?></strong>?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                    <button type="submit" name="delete_penempatan" class="btn btn-danger">Hapus</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
                                 <?php
                                     } ;
                                 ?>

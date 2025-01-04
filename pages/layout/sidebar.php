@@ -5,7 +5,7 @@
                 <p class="fw-semibold text-center">Sistem Surat Perintah Perjalanan Dinas</p>
                 <hr class="border border-success opacity-100 w-75">
             </div>
-            <div class="d-flex align-items-start justify-content-center flex-column ms-3 mt-2">
+            <div class="d-flex align-items-start justify-content-center flex-column ms-2 mt-2">
                 <a class="btn fw-semibold" href="../dashboard/dashboard.php"><i class="bi bi-speedometer2"></i> Dashboard</a>
                 <div class="dropdown">
                     <button class="btn dropdown-toggle text-dark fw-semibold" type="button" data-bs-toggle="dropdown" aria-expanded="false">

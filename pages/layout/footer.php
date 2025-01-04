@@ -2,7 +2,7 @@
         <div class="container p-4">
             <div class="row">
                 <div class="col-lg-6 col-md-12 mb-4 mb-md-0 mt-4">
-                    <img src="../../assets/images/Logo Kikc.png" alt="Logo Kikc" width="70" height="28">
+                    <img src="../../assets/images/Logo Kikc.png" alt="Logo Kikc" width="55" height="25">
                     <p class="fw-semibold mt-3"><i class="bi bi-c-circle"></i> 2024. Kawasan Industri Kujang Cikampek</p>
                     <p><i class="bi bi-geo-alt"></i> Jl. Kw. Industri No.Kujang, Kalihurip, Kec. Cikampek, Karawang, Jawa Barat 41373</p>
                 </div> 

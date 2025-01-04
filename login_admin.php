@@ -24,18 +24,16 @@
             </div>
             <div class="card card-login shadow">
                 <div class="card-body">
-                    <form method="post" action="backend/login.php">
-                        <h5 class="text-center">Login to Your Account</h5>
-                        <p class="text-center">Masukan No Badge Dan Tanggal Lahir</p>
+                    <form method="post" action="backend/autentifikasi/admin.php">
+                        <h5 class="text-center">Login to Your Account Admin</h5>
+                        <p class="text-center">Masukan Email Dan Password Anda</p>
                         <div class="mb-3">
-                            <i class="bi bi-person-fill"></i>
-                            <label for="no_badge" class="form-label">No Badge :</label>
-                            <input type="number" class="form-control" id="no_badge" name="no_badge" required>
+                            <label for="email" class="form-label">Email :</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="mb-3">
-                            <i class="bi bi-calendar-fill"></i>
-                            <label for="tanggal_lahir" class="form-label">Tanggal Lahir :</label>
-                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" required>
+                            <label for="password" class="form-label">Password :</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <div class="mb-3">
                             <button type="submit" name="login" class="fw-semibold btn btn-success main-background text-light w-100 main-background">Login</button>
