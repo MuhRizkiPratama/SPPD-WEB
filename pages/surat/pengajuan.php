@@ -1,6 +1,9 @@
 <?php
     require "../../config/connection.php";
     require "../layout/header.php";
+
+    session_start();
+    $user = $_SESSION['pegawai'];
 ?>
     <main>
         <div class="d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
@@ -16,23 +19,23 @@
                                 <p class="fw-semibold">Ditugaskan kepada:</p>
                                 <div class="mb-3">
                                 <label class="form-label" for="no_badge">No Badge:</label>
-                                    <input class="form-control" type="number" id="no_badge" name="no_badge" require>
+                                    <input class="form-control" type="number" id="no_badge" name="no_badge" value="<?= $pegawai['no_badge']; ?>" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="nama_pegawai">Nama Pegawai:</label>
-                                    <input class="form-control" type="text" id="nama_pegawai" name="nama_pegawai" require>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="alamat">Alamat:</label>
-                                    <input class="form-control" type="text" id="alamat" name="alamat" require>
+                                    <input class="form-control" type="text" id="nama_pegawai" name="nama_pegawai" value="<?= $pegawai['nama_lengkap']; ?>" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="jabatan">Jabatan:</label>
-                                    <input class="form-control" type="text" id="jabatan" name="jabatan" require>
+                                    <input class="form-control" type="text" id="jabatan" name="jabatan" value="<?= $pegawai['jabatan']; ?>" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="unit_kerja">Unit Kerja:</label>
-                                    <input class="form-control" type="text" id="unit_kerja" name="unit_kerja" require>
+                                    <input class="form-control" type="text" id="unit_kerja" name="unit_kerja" value="<?= $pegawai['unit_kerja']; ?>" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="uang_saku">Uang Saku:</label>
+                                    <input class="form-control" type="number" id="uang_saku" name="uang_saku" value="<?= $pegawai['uang_saku']; ?>" readonly>
                                 </div>
                             </div>
     

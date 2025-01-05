@@ -16,7 +16,7 @@
     
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 
-    <!-- jQuery (untuk DataTables) -->
+    <!-- jQuery DataTables -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- JS DataTables -->

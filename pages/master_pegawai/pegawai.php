@@ -60,23 +60,23 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="no_badge">No Badge :</label>
+                                                        <label class="form-label" for="no_badge">No Badge:</label>
                                                         <input class="form-control" type="number" name="no_badge" id="no_badge" value="<?= $data['no_badge']; ?>" required>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="tanggal_lahir">Tanggal Lahir :</label>
+                                                        <label class="form-label" for="tanggal_lahir">Tanggal Lahir:</label>
                                                         <input class="form-control" type="date" name="tanggal_lahir" id="tanggal_lahir" value="<?= $data['tanggal_lahir']; ?>" required>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="nama_lengkap">Nama Lengkap :</label>
+                                                        <label class="form-label" for="nama_lengkap">Nama Lengkap:</label>
                                                         <input class="form-control" type="text" name="nama_lengkap" id="nama_lengkap" value="<?= $data['nama_lengkap']; ?>" required>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="uang_saku">Uang Saku :</label>
+                                                        <label class="form-label" for="uang_saku">Uang Saku:</label>
                                                         <input class="form-control" type="number" name="uang_saku" id="uang_saku" value="<?= $data['uang_saku']; ?>" required>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="jabatan">Jabatan :</label>
+                                                        <label class="form-label" for="jabatan">Jabatan:</label>
                                                         <select class="form-select" name="id_jabatan" id="jabatan" required>
                                                             <option disabled selected></option>
                                                             <?php
@@ -167,23 +167,23 @@
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label class="form-label" for="no_badge">No Badge :</label>
+                                <label class="form-label" for="no_badge">No Badge:</label>
                                 <input class="form-control" type="number" name="no_badge" id="no_badge" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="tanggal_lahir">Tanggal Lahir :</label>
+                                <label class="form-label" for="tanggal_lahir">Tanggal Lahir:</label>
                                 <input class="form-control" type="date" name="tanggal_lahir" id="tanggal_lahir" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="nama_lengkap">Nama Lengkap :</label>
+                                <label class="form-label" for="nama_lengkap">Nama Lengkap:</label>
                                 <input class="form-control" type="text" name="nama_lengkap" id="nama_lengkap" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="uang_saku">Uang Saku :</label>
+                                <label class="form-label" for="uang_saku">Uang Saku:</label>
                                 <input class="form-control" type="number" name="uang_saku" id="uang_saku" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="jabatan">Jabatan :</label>
+                                <label class="form-label" for="jabatan">Jabatan:</label>
                                 <select class="form-select" name="id_jabatan" id="jabatan" required>
                                     <option disabled selected></option>
                                     <?php
@@ -196,7 +196,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="unit_kerja">Unit Kerja :</label>
+                                <label class="form-label" for="unit_kerja">Unit Kerja:</label>
                                 <select class="form-select" name="id_unit_kerja" id="unit_kerja" required>
                                     <option disabled selected></option>
                                     <?php
@@ -209,7 +209,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label" for="penempatan">Penempatan   :</label>
+                                <label class="form-label" for="penempatan">Penempatan:</label>
                                 <select class="form-select" name="id_penempatan" id="penempatan" required>
                                     <option disabled selected></option>
                                     <?php

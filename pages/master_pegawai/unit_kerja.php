@@ -49,7 +49,7 @@
                                                 <div class="modal-body">
                                                     <input type="hidden" name="id_unit_kerja" value="<?= $data['id']; ?>">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="unit_kerja">Unit Kerja :</label>
+                                                        <label class="form-label" for="unit_kerja">Unit Kerja:</label>
                                                         <input class="form-control" type="text" name="unit_kerja" id="unit_kerja" value="<?= $data['unit_kerja']; ?>" required>
                                                     </div>
                                                 </div>
@@ -100,12 +100,12 @@
                 <form action="../../backend/unit_kerja/create.php" method="post">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Jabatan</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Unit Kerja</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label class="form-label" for="unit_kerja">Unit Kerja :</label>
+                                <label class="form-label" for="unit_kerja">Unit Kerja:</label>
                                 <input class="form-control" type="text" name="unit_kerja" id="unit_kerja" required>
                             </div>
                         </div>

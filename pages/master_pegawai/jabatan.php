@@ -49,7 +49,7 @@
                                                 <div class="modal-body">
                                                     <input type="hidden" name="id_jabatan" value="<?= $data['id']; ?>">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="jabatan">Jabatan :</label>
+                                                        <label class="form-label" for="jabatan">Jabatan:</label>
                                                         <input class="form-control" type="text" name="jabatan" id="jabatan" value="<?= $data['jabatan']; ?>" required>
                                                     </div>
                                                 </div>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label class="form-label" for="jabatan">Jabatan :</label>
+                                <label class="form-label" for="jabatan">Jabatan:</label>
                                 <input class="form-control" type="text" name="jabatan" id="jabatan" required>
                             </div>
                         </div>
