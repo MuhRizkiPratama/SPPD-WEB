@@ -5,10 +5,9 @@
         $id_penempatan = $_POST["id_penempatan"];
         $penempatan = $_POST["penempatan"];
 
-        $query = "UPDATE penempatan SET penempatan = '$penempatan' WHERE id = '$id_penempatan'";
-        $update = mysqli_query($database, $query);
+        $update_penempatan = mysqli_query($database, "UPDATE penempatan SET penempatan = '$penempatan' WHERE id = '$id_penempatan'");
 
-        if ($update) {
+        if ($update_penempatan) {
             header("Location: ../../pages/master_pegawai/penempatan.php");
         } else {
             echo "Data Penempatan Gagal Diupdate";

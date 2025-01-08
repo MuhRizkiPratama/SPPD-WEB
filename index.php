@@ -24,17 +24,17 @@
         <div class="d-flex justify-content-center align-items-center mt-5 mb-5">
             <div class="card shadow">
                 <div class="card-header">
-                    <div class="d-flex justify-content-center flex-column align-items-center gap-2">
-                        <img src="assets/images/Logo Kikc.png" alt="logo kikc" width="100" height="40">
-                        <h5 class="text-center">Surat Perintah Perjalanan Dinas</h5>
+                    <div class="d-flex justify-content-center flex-column align-items-center p-2 gap-2">
+                        <img src="assets/images/Logo Kikc.png" alt="logo kikc" width="80" height="35">
+                        <p class="text-center fw-semibold">Surat Perintah Perjalanan Dinas</p>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#loginPegawai">
+                        <button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#loginPegawai">
                             Login Pegawai
                         </button>
-                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#loginAdmin">
+                        <button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#loginAdmin">
                             Login Admin
                         </button>
                     </div>
@@ -43,7 +43,7 @@
         </div>
 
         <!-- Modal login Pegawai-->
-        <div class="modal fade" id="loginPegawai" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal modal-sm fade" id="loginPegawai" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -65,7 +65,7 @@
                                 <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" required>
                             </div>
                             <div class="mb-3">
-                                <button type="submit" name="login" class="fw-semibold btn btn-success main-background text-light w-100 main-background">Login</button>
+                                <button type="submit" name="login_pegawai" class="fw-semibold btn btn-success main-background text-light w-100 main-background">Login</button>
                             </div>
                         </form> 
                     </div>
@@ -74,7 +74,7 @@
         </div>
     
         <!-- Modal login Pegawai-->
-        <div class="modal fade" id="loginAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal modal-sm fade" id="loginAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -96,7 +96,7 @@
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             <div class="mb-3">
-                                <button type="submit" name="login" class="fw-semibold btn btn-success main-background text-light w-100 main-background">Login</button>
+                                <button type="submit" name="login_admin" class="fw-semibold btn btn-success main-background text-light w-100 main-background">Login</button>
                             </div>
                         </form> 
                     </div>

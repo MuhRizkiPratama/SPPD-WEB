@@ -4,10 +4,9 @@
     if (isset($_POST['delete_penempatan'])) {
         $id_penempatan = $_POST["id_penempatan"]; 
 
-        $query = "DELETE FROM penempatan WHERE id = '$id_penempatan'";
-        $delete = mysqli_query($database, $query);
+        $delete_penempatan = mysqli_query($database, "DELETE FROM penempatan WHERE id = '$id_penempatan'");
 
-        if ($delete) {
+        if ($delete_penempatan) {
             header("Location: ../../pages/master_pegawai/penempatan.php");
         } else {
             echo "Data Penempatan Gagal Dihapus";

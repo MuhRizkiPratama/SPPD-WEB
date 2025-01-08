@@ -4,10 +4,9 @@
     if(isset($_POST['create_jabatan'])){
         $jabatan = $_POST["jabatan"];
 
-        $query = "INSERT INTO jabatan (jabatan) values ('$jabatan')";
-        $create = mysqli_query($database, $query);
+        $create_jabatan = mysqli_query($database, "INSERT INTO jabatan (jabatan) values ('$jabatan')");
 
-        if($jabatan){
+        if($create_jabatan){
             header("Location: ../../pages/master_pegawai/jabatan.php");
         } else {
             echo "Data Jabatan Gagal Ditambahkan";

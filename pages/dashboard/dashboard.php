@@ -1,5 +1,4 @@
 <?php
-    require "../../config/connection.php";
     require "../layout/header.php";
 ?> 
     <main>

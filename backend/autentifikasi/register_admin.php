@@ -8,13 +8,12 @@
 
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-        $query = "INSERT INTO admin (nama_lengkap, email, password) VALUES ('$nama_lengkap', '$email', '$hashed_password')";
-        $create = mysqli_query($database, $query);
+        $create_admin = mysqli_query($database, "INSERT INTO admin (nama_lengkap, email, password) VALUES ('$nama_lengkap', '$email', '$hashed_password')");
 
-        if($create){
+        if($create_admin){
             $user = mysqli_insert_id($database);
 
-            $createUser = mysqli_query($database, "INSERT INTO users (id_admin, role) VALUES ('$user', 'admin')");
+            $create_user = mysqli_query($database, "INSERT INTO users (id_admin, role) VALUES ('$user', 'admin')");
             header("Location: ../../pages/admin/create.php");
         } else {
             echo "Data Admin Gagal Ditambahkan.";

@@ -4,10 +4,9 @@
     if(isset($_POST['create_penempatan'])){
         $penempatan = $_POST["penempatan"];
 
-        $query = "INSERT INTO penempatan (penempatan) values ('$penempatan')";
-        $create = mysqli_query($database, $query);
+        $create_penempatan = mysqli_query($database, "INSERT INTO penempatan (penempatan) values ('$penempatan')");
 
-        if($create){
+        if($create_penempatan){
             header("Location: ../../pages/master_pegawai/penempatan.php");
         } else {
             echo "Data Penempatan Gagal Ditambahkan";

@@ -1,12 +1,11 @@
 <?php
-    require "../../config/connection.php";
     require "../layout/header.php";
 ?>
     <main>
         <div class="container mt-5 mb-5">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="text-center">Data Pegawai</h5>
+                    <h5 class="text-center m-0">Data Pegawai</h5>
                 </div>
                 <div class="card-body">
                 <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">

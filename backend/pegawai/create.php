@@ -10,14 +10,14 @@
         $unit_kerja = $_POST['id_unit_kerja'];
         $penempatan = $_POST['id_penempatan'];
         
-        $createPegawai = mysqli_query($database, "INSERT INTO pegawai (no_badge, tanggal_lahir, nama_lengkap, uang_saku, id_jabatan, id_unit_kerja, id_penempatan) VALUES ('$no_badge', '$tanggal_lahir', '$nama_lengkap', '$uang_saku', '$jabatan', '$unit_kerja', '$penempatan')");
+        $create_pegawai = mysqli_query($database, "INSERT INTO pegawai (no_badge, tanggal_lahir, nama_lengkap, uang_saku, id_jabatan, id_unit_kerja, id_penempatan) VALUES ('$no_badge', '$tanggal_lahir', '$nama_lengkap', '$uang_saku', '$jabatan', '$unit_kerja', '$penempatan')");
         
-        if ($createPegawai){
+        if ($create_pegawai){
             $id_pegawai = mysqli_insert_id($database);
 
-            $createUsers = mysqli_query($database, "INSERT INTO users (id_pegawai, role) VALUES ('$id_pegawai', 'pegawai')");
+            $create_users = mysqli_query($database, "INSERT INTO users (id_pegawai, role) VALUES ('$id_pegawai', 'pegawai')");
 
-            if ($createUsers){
+            if ($create_users){
                 header("Location:../../pages/master_pegawai/pegawai.php");
             } else {
                 echo "Gagal Menambahkan Data Users";

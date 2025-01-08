@@ -5,10 +5,9 @@
         $id_unit_kerja = $_POST["id_unit_kerja"];
         $unit_kerja = $_POST["unit_kerja"];
 
-        $query = "UPDATE unit_kerja SET unit_kerja = '$unit_kerja' WHERE id = '$id_unit_kerja'";
-        $update = mysqli_query($database, $query);
+        $update_unit_kerja = mysqli_query($database, "UPDATE unit_kerja SET unit_kerja = '$unit_kerja' WHERE id = '$id_unit_kerja'");
 
-        if ($update) {
+        if ($update_unit_kerja) {
             header("Location: ../../pages/master_pegawai/unit_kerja.php");
         } else {
             echo "Data Unit Kerja Gagal Diupdate";

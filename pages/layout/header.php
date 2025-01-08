@@ -1,3 +1,10 @@
+<?php
+    require "../../config/connection.php";
+
+    session_start();
+    $role = $_SESSION['role'];
+    $user = $_SESSION['pegawai'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -5,10 +5,9 @@
         $id_jabatan = $_POST["id_jabatan"];
         $jabatan = $_POST["jabatan"];
 
-        $query = "UPDATE jabatan SET jabatan = '$jabatan' WHERE id = '$id_jabatan'";
-        $update = mysqli_query($database, $query);
+        $update_jabatan = mysqli_query($database, "UPDATE jabatan SET jabatan = '$jabatan' WHERE id = '$id_jabatan'");
 
-        if ($update) {
+        if ($update_jabatan) {
             header("Location: ../../pages/master_pegawai/jabatan.php");
         } else {
             echo "Data Jabatan Gagal Diupdate";
