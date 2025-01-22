@@ -29,6 +29,10 @@ header, main, footer {
 header.active, main.active, footer.active{
     margin-left: 200px;
 }
+main{
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+}
 .dropdown-menu a:active {
     color: black;
     background-color: white;

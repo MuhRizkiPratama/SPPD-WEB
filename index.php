@@ -20,13 +20,27 @@
     <title>Sistem Surat Perintah Perjalanan Dinas</title>
 </head>
 <body>
+    <header>
+        <img src="assets/images/Logo Kikc.png" alt="Logo Kikc" width="55" height="25">
+    </header>
+
     <main>
-        <div class="d-flex justify-content-center align-items-center mt-5 mb-5">
+        <div class="d-flex flex-column justify-content-center align-items-center gap-2 main-content">
+
+            <!-- Alert Gagal -->
+            <?php if(isset($_SESSION['failed'])): ?>
+                <div class="alert alert-danger" role="alert" id="alert_messages">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    <?= $_SESSION['failed']; ?>
+                </div>
+                <?php unset($_SESSION['failed']); ?>
+            <?php endif; ?>
+
             <div class="card shadow">
                 <div class="card-header">
                     <div class="d-flex justify-content-center flex-column align-items-center p-2 gap-2">
                         <img src="assets/images/Logo Kikc.png" alt="logo kikc" width="80" height="35">
-                        <p class="text-center fw-semibold">Surat Perintah Perjalanan Dinas</p>
+                        <p class="text-center fw-semibold m-0">Sistem Surat Perintah Perjalanan Dinas</p>
                     </div>
                 </div>
                 <div class="card-body">
@@ -57,12 +71,12 @@
                                 <p class="text-center">Login to Your Account Pegawai</p>
                             </div>
                             <div class="mb-3">
-                                <label for="no_badge" class="form-label">No Badge :</label>
-                                <input type="number" class="form-control" id="no_badge" name="no_badge" required>
+                                <label class="form-label" for="no_badge">No Badge :</label>
+                                <input class="form-control" type="text" id="no_badge" name="no_badge" required>
                             </div>
                             <div class="mb-3">
-                                <label for="tanggal_lahir" class="form-label">Tanggal Lahir :</label>
-                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" required>
+                                <label class="form-label" for="tanggal_lahir">Tanggal Lahir :</label>
+                                <input class="form-control" type="date"id="tanggal_lahir" name="tanggal_lahir" required>
                             </div>
                             <div class="mb-3">
                                 <button type="submit" name="login_pegawai" class="fw-semibold btn btn-success main-background text-light w-100 main-background">Login</button>
@@ -88,12 +102,12 @@
                                 <p class="text-center">Login to Your Account Admin</p>
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email :</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <label class="form-label" for="email">Email :</label>
+                                <input class="form-control" type="email" id="email" name="email" required>
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password :</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <label class="form-label" for="password">Password :</label>
+                                <input class="form-control" type="password" id="password" name="password" required>
                             </div>
                             <div class="mb-3">
                                 <button type="submit" name="login_admin" class="fw-semibold btn btn-success main-background text-light w-100 main-background">Login</button>
@@ -122,5 +136,6 @@
     </footer>
 
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/alert.js"></script> 
 </body>
 </html>

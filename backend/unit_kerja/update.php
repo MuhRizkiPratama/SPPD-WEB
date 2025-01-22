@@ -1,16 +1,20 @@
 <?php
     require "../../config/connection.php";
 
+    session_start();
+
     if (isset($_POST['update_unit_kerja'])) {
         $id_unit_kerja = $_POST["id_unit_kerja"];
-        $unit_kerja = $_POST["unit_kerja"];
+        $nama_unit_kerja = $_POST["nama_unit_kerja"];
 
-        $update_unit_kerja = mysqli_query($database, "UPDATE unit_kerja SET unit_kerja = '$unit_kerja' WHERE id = '$id_unit_kerja'");
+        $update_unit_kerja = mysqli_query($database, "UPDATE unit_kerja SET nama_unit_kerja = '$nama_unit_kerja' WHERE id_unit_kerja = '$id_unit_kerja'");
 
         if ($update_unit_kerja) {
-            header("Location: ../../pages/master_pegawai/unit_kerja.php");
+            $_SESSION['success'] = "Data unit kerja berhasil diedit.";
+            header("Location:../../pages/master_pegawai/unit_kerja.php");
         } else {
-            echo "Data Unit Kerja Gagal Diupdate";
+            $_SESSION['failed'] = "Data unit kerja gagal diedit.";
+            header("Location:../../pages/master_pegawai/unit_kerja.php");
         }
     }
 ?>

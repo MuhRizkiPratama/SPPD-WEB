@@ -2,14 +2,13 @@
     require "../../config/connection.php";
 
     if(isset($_POST['disetujui'])){
-        $id_pengajuan = $_POST['id_pengajuan'];
+        $id_riwayat = $_POST['id_riwayat'];
         $status = $_POST['status'];
         $keterangan = $_POST['keterangan'];
 
-        $verifikasi_disetujui = mysqli_query($database, "UPDATE riwayat_pengajuan SET status_pengajuan = '$status', keterangan = '$keterangan' WHERE id = '$id_pengajuan'");
+        $verifikasi_disetujui = mysqli_query($database, "UPDATE riwayat_pengajuan SET status_pengajuan = '$status', keterangan = '$keterangan' WHERE id_riwayat = '$id_riwayat'");
 
         if($verifikasi_disetujui){
-
             $tanggal = date('Y-m-d H:i:s');
             $bulan = date('n', strtotime($tanggal));
             $tahun = date('Y', strtotime($tanggal));
@@ -21,20 +20,20 @@
 
             $no_surat = "$no/SPPD/KIKC/$angka_romawi/$tahun";
 
-            $insert_pengelolaan_sppd = mysqli_query($database, "INSERT INTO pengelolaan_sppd (id_sppd, no_surat) SELECT id_sppd, '$no_surat' FROM riwayat_pengajuan WHERE id = '$id_pengajuan'");
-            header('Location: ../../pages/surat/riwayat.php');
+            $insert_surat_terverifikasi = mysqli_query($database, "INSERT INTO sppd_terverifikasi (id_pengajuan, no_surat) SELECT id_pengajuan, '$no_surat' FROM riwayat_pengajuan WHERE id_riwayat = '$id_riwayat'");
+            header('Location: ../../pages/manajemen_surat/riwayat_pengajuan_admin.php');
         }
     }
-
+    
     if(isset($_POST['ditolak'])){
-        $id_pengajuan = $_POST['id_pengajuan'];
+        $id_riwayat = $_POST['id_riwayat'];
         $status = $_POST['status'];
         $keterangan = $_POST['keterangan'];
 
-        $verifikasi_ditolak = mysqli_query($database, "UPDATE riwayat_pengajuan SET status_pengajuan = '$status', keterangan = '$keterangan' WHERE id = '$id_pengajuan'");
+        $verifikasi_ditolak = mysqli_query($database, "UPDATE riwayat_pengajuan SET status_pengajuan = '$status', keterangan = '$keterangan' WHERE id_riwayat = '$id_riwayat'");
 
         if($verifikasi_ditolak){
-            header('Location: ../../pages/surat/riwayat.php');
+            header('Location: ../../pages/manajemen_surat/riwayat_pengajuan_admin.php');
         }
     }
 ?>

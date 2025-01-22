@@ -1,15 +1,39 @@
 <?php
     require "../layout/header.php";
+
+    if($_SESSION['role'] != 'admin'){
+        session_destroy();
+        header("Location:../../index.php");
+    }
 ?>
     <main>
-        <div class="container mt-5 mb-5">
+        <div class="container">
+            
+            <!-- Alert Berhasil -->
+            <?php if(isset($_SESSION['success'])): ?>
+                <div class="alert alert-success" role="alert" id="alert-messages">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <?= $_SESSION['success']; ?>
+                </div>
+                <?php unset($_SESSION['success']); ?>
+            <?php endif; ?>
+            
+            <!-- Alert Gagal -->
+            <?php if(isset($_SESSION['failed'])): ?>
+                <div class="alert alert-danger" role="alert" id="alert-messages">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    <?= $_SESSION['failed']; ?>
+                </div>
+                <?php unset($_SESSION['failed']); ?>
+            <?php endif; ?>
+
             <div class="card">
                 <div class="card-header">
                     <h5 class="text-center m-0">Unit Kerja</h5>
                 </div>
                 <div class="card-body">
-                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
-                        <i class="bi bi-plus"></i>
+                    <button type="button" class="btn btn-sm btn-primary mt-1 mb-1" data-bs-toggle="modal" data-bs-target="#createModal">
+                        <i class="bi bi-plus"></i> Tambah Unit Kerja
                     </button>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="myTable">
@@ -23,21 +47,21 @@
                             <tbody>
                                 <?php
                                     $no = 1;
-                                    $queryUnitKerja = "SELECT * FROM unit_kerja";
-                                    $resultUnitKerja = mysqli_query ($database, $queryUnitKerja);
-                                    while ($data = mysqli_fetch_assoc($resultUnitKerja)){
+                                    $select_unit_kerja = "SELECT * FROM unit_kerja";
+                                    $result_unit_kerja = mysqli_query ($database, $select_unit_kerja);
+                                    while ($unit_kerja = mysqli_fetch_assoc($result_unit_kerja)){
                                 ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td><?= $data['unit_kerja']; ?></td>
+                                    <td><?= $unit_kerja['nama_unit_kerja']; ?></td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#updateModal<?= $data['id'] ?>"><i class="bi bi-pencil-square"></i></button>
-                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $data['id'] ?>"><i class="bi bi-trash"></i></button>
+                                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#updateModal<?= $unit_kerja['id_unit_kerja'] ?>"><i class="bi bi-pencil-square"></i> Edit</button>
+                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $unit_kerja['id_unit_kerja'] ?>"><i class="bi bi-trash"></i> Hapus</button>
                                     </td>
                                 </tr>
 
                                 <!-- Modal Update Unit Kerja -->
-                                <div class="modal fade" id="updateModal<?= $data['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="updateModal<?= $unit_kerja['id_unit_kerja'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <form action="../../backend/unit_kerja/update.php" method="post">
                                             <div class="modal-content">
@@ -46,10 +70,10 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <input type="hidden" name="id_unit_kerja" value="<?= $data['id']; ?>">
+                                                    <input type="hidden" name="id_unit_kerja" value="<?= $unit_kerja['id_unit_kerja']; ?>">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="unit_kerja">Unit Kerja:</label>
-                                                        <input class="form-control" type="text" name="unit_kerja" id="unit_kerja" value="<?= $data['unit_kerja']; ?>" required>
+                                                        <label class="form-label" for="nama_unit_kerja">Nama Unit Kerja:</label>
+                                                        <input class="form-control" type="text" name="nama_unit_kerja" id="nama_unit_kerja" value="<?= $unit_kerja['nama_unit_kerja']; ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -62,7 +86,7 @@
                                 </div>
 
                                 <!-- Modal Delete Unit Kerja -->
-                                <div class="modal fade" id="deleteModal<?= $data['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="deleteModal<?= $unit_kerja['id_unit_kerja']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <form action="../../backend/unit_kerja/delete.php" method="post">
                                             <div class="modal-content">
@@ -71,8 +95,8 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <input type="hidden" name="id_unit_kerja" value="<?= $data['id']; ?>">
-                                                    <p>Apakah Anda yakin ingin menghapus Unit Kerja <strong><?= $data['unit_kerja']; ?></strong>?</p>
+                                                    <input type="hidden" name="id_unit_kerja" value="<?= $unit_kerja['id_unit_kerja']; ?>">
+                                                    <p>Apakah Anda yakin ingin menghapus Unit Kerja <strong><?= $unit_kerja['nama_unit_kerja']; ?></strong>?</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -104,8 +128,8 @@
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label class="form-label" for="unit_kerja">Unit Kerja:</label>
-                                <input class="form-control" type="text" name="unit_kerja" id="unit_kerja" required>
+                                <label class="form-label" for="nama_unit_kerja">Nama Unit Kerja:</label>
+                                <input class="form-control" type="text" name="nama_unit_kerja" id="nama_unit_kerja" required>
                             </div>
                         </div>
                         <div class="modal-footer">

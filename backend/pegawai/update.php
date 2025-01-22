@@ -1,5 +1,5 @@
 <?php
-    if(isset($_POST['update'])){
+    if(isset($_POST['update_pegawai'])){
         $no_badge = $_POST['no_badge'];
         $nama_pegawai = $_POST['nama_pegawai'];
         $jabatan = $_POST['jabatan'];

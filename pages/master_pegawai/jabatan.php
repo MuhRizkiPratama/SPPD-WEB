@@ -1,15 +1,39 @@
 <?php
     require "../layout/header.php";
+
+    if($_SESSION['role'] != 'admin'){
+        session_destroy();
+        header("Location:../../index.php");
+    }
 ?>
     <main>
-        <div class="container mt-5 mb-5">
+        <div class="container">
+
+            <!-- Alert Berhasil -->
+            <?php if(isset($_SESSION['success'])): ?>
+                <div class="alert alert-success" role="alert" id="alert-messages">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <?= $_SESSION['success']; ?>
+                </div>
+                <?php unset($_SESSION['success']); ?>
+            <?php endif; ?>
+            
+            <!-- Alert Gagal -->
+            <?php if(isset($_SESSION['failed'])): ?>
+                <div class="alert alert-danger" role="alert" id="alert-messages">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    <?= $_SESSION['failed']; ?>
+                </div>
+                <?php unset($_SESSION['failed']); ?>
+            <?php endif; ?>
+
             <div class="card">
                 <div class="card-header">
                     <h5 class="text-center m-0">Jabatan</h5>
                 </div>
                 <div class="card-body">
-                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
-                        <i class="bi bi-plus"></i>
+                    <button type="button" class="btn btn-sm btn-primary mt-1 mb-1" data-bs-toggle="modal" data-bs-target="#createModal">
+                        <i class="bi bi-plus"></i> Tambah Jabatan
                     </button>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="myTable">
@@ -23,21 +47,21 @@
                             <tbody>
                                 <?php
                                     $no = 1;
-                                    $queryJabatan = "SELECT * FROM jabatan";
-                                    $resultJabatan = mysqli_query($database, $queryJabatan);
-                                    while($data = mysqli_fetch_assoc($resultJabatan)){ 
+                                    $select_jabatan = "SELECT * FROM jabatan";
+                                    $result_jabatan = mysqli_query($database, $select_jabatan);
+                                    while($jabatan = mysqli_fetch_assoc($result_jabatan)){ 
                                 ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td><?= $data['jabatan']; ?></td>
+                                    <td><?= $jabatan['nama_jabatan']; ?></td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#updateModal<?= $data['id'] ?>"><i class="bi bi-pencil-square"></i></button>
-                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $data['id']; ?>"><i class="bi bi-trash"></i></button>
+                                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#updateModal<?= $jabatan['id_jabatan'] ?>"><i class="bi bi-pencil-square"></i> Edit</button>
+                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $jabatan['id_jabatan']; ?>"><i class="bi bi-trash"></i> Hapus</button>
                                     </td>
                                 </tr>
                                 
                                 <!-- Modal Update Jabatan -->
-                                <div class="modal fade" id="updateModal<?= $data['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="updateModal<?= $jabatan['id_jabatan'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <form action="../../backend/jabatan/update.php" method="post">
                                             <div class="modal-content">
@@ -46,10 +70,10 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <input type="hidden" name="id_jabatan" value="<?= $data['id']; ?>">
+                                                    <input type="hidden" name="id_jabatan" value="<?= $jabatan['id_jabatan']; ?>">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="jabatan">Jabatan:</label>
-                                                        <input class="form-control" type="text" name="jabatan" id="jabatan" value="<?= $data['jabatan']; ?>" required>
+                                                        <label class="form-label" for="nama_jabatan">Nama Jabatan:</label>
+                                                        <input class="form-control" type="text" name="nama_jabatan" id="nama_jabatan" value="<?= $jabatan['nama_jabatan']; ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -62,7 +86,7 @@
                                 </div>
 
                                 <!-- Modal Delete Jabatan -->
-                                <div class="modal fade" id="deleteModal<?= $data['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="deleteModal<?= $jabatan['id_jabatan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <form action="../../backend/jabatan/delete.php" method="post">
                                             <div class="modal-content">
@@ -71,8 +95,8 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <input type="hidden" name="id_jabatan" value="<?= $data['id']; ?>">
-                                                    <p>Apakah Anda yakin ingin menghapus jabatan <strong><?= $data['jabatan']; ?></strong>?</p>
+                                                    <input type="hidden" name="id_jabatan" value="<?= $jabatan['id_jabatan']; ?>">
+                                                    <p>Apakah Anda yakin ingin menghapus jabatan <strong><?= $jabatan['nama_jabatan']; ?></strong>?</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -104,8 +128,8 @@
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label class="form-label" for="jabatan">Jabatan:</label>
-                                <input class="form-control" type="text" name="jabatan" id="jabatan" required>
+                                <label class="form-label" for="nama_jabatan">Nama Jabatan:</label>
+                                <input class="form-control" type="text" name="nama_jabatan" id="nama_jabatan" required>
                             </div>
                         </div>
                         <div class="modal-footer">

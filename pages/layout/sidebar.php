@@ -17,20 +17,32 @@
                             <li><a class="dropdown-item fw-semibold" href="../master_pegawai/pegawai.php">Data Pegawai</a></li>
                             <li><a class="dropdown-item fw-semibold" href="../master_pegawai/jabatan.php">Jabatan</a></li>
                             <li><a class="dropdown-item fw-semibold" href="../master_pegawai/unit_kerja.php">Unit Kerja</a></li>
-                            <li><a class="dropdown-item fw-semibold" href="../master_pegawai/penempatan.php">Penempatan</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle text-dark fw-semibold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-file-text"></i> Manajemen Surat
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item fw-semibold" href="../manajemen_surat/riwayat_pengajuan_admin.php">Riwayat Pengajuan</a></li>
+                            <li><a class="dropdown-item fw-semibold" href="../manajemen_surat/surat_terverifikasi.php">Surat Terverifikasi</a></li>
+                        </ul>
+                    </div>
+                    <a class="btn fw-semibold" href="../users/admin.php"><i class="bi bi-person-gear"></i> Admin</a>
+                <?php endif; ?>
+                
+                <?php if($role === 'pegawai') : ?>
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle text-dark fw-semibold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-file-text"></i> Surat
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item fw-semibold" href="../manajemen_surat/pengajuan.php">Form Pengajuan</a></li>
+                            <li><a class="dropdown-item fw-semibold" href="../manajemen_surat/riwayat_pengajuan_pegawai.php">Riwayat Pengajuan</a></li>
                         </ul>
                     </div>
                 <?php endif; ?>
-
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle text-dark fw-semibold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-file-text"></i> Surat
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item fw-semibold" href="../surat/pengajuan.php">Form Pengajuan</a></li>
-                        <li><a class="dropdown-item fw-semibold" href="../surat/riwayat.php">Riwayat Pengajuan</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
         <div class="d-flex justify-content-start align-items-center ms-2 mt-1">
