@@ -87,7 +87,7 @@
             </div>
         </div>
     
-        <!-- Modal login Pegawai-->
+        <!-- Modal login Admin-->
         <div class="modal modal-sm fade" id="loginAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

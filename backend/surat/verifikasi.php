@@ -16,7 +16,9 @@
             $romawi_bulan = [1 => 'I', 2 => 'II', 3 => 'III', 4 => 'IV', 5 => 'V', 6 => 'VI', 7 => 'VII', 8 => 'VIII', 9 => 'IX', 10 => 'X', 11 => 'XI', 12 => 'XII'];
             $angka_romawi = $romawi_bulan[$bulan];
 
-            $no = 1;
+            $jumlah_surat = mysqli_query($database, "SELECT COUNT(*) as total FROM sppd_terverifikasi");
+            $data = mysqli_fetch_assoc($jumlah_surat);
+            $no = $data['total'] + 1;
 
             $no_surat = "$no/SPPD/KIKC/$angka_romawi/$tahun";
 

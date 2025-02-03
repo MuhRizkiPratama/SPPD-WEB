@@ -138,11 +138,6 @@
                                             </div>
                                             <hr>
                                             <div class="d-flex justify-content-between">
-                                                <p class="fw-semibold">Biaya Penginapan Lumpsum:</p>
-                                                <p><?= $sppd['biaya_penginapan_ls']; ?></p>
-                                            </div>
-                                            <hr>
-                                            <div class="d-flex justify-content-between">
                                                 <p class="fw-semibold">Biaya Penginapan:</p>
                                                 <p><?= $sppd['biaya_penginapan']; ?></p>
                                             </div>
@@ -165,6 +160,26 @@
                                             <div class="d-flex justify-content-between">
                                                 <p class="fw-semibold">Total Biaya:</p>
                                                 <p><?= $sppd['total_biaya']; ?></p>
+                                            </div>
+                                            <hr>
+                                            <div class="d-flex flex-column">
+                                                <p class="fw-semibold">Bukti Penginapan:</p>
+                                                <img src="<?= $sppd['bukti_penginapan']?>">
+                                            </div>
+                                            <hr>
+                                            <div class="d-flex flex-column">
+                                                <p class="fw-semibold">Bukti Tol:</p>
+                                                <img src="<?= $sppd['bukti_tol']?>">
+                                            </div>
+                                            <hr>
+                                            <div class="d-flex flex-column">
+                                                <p class="fw-semibold">Bukti Bahan Bakar:</p>
+                                                <img src="<?= $sppd['bukti_bahan_bakar']?>">
+                                            </div>
+                                            <hr>
+                                            <div class="d-flex flex-column">
+                                                <p class="fw-semibold">Bukti Lain:</p>
+                                                <img src="<?= $sppd['bukti_lain']?>">
                                             </div>
                                         </div>
                                         <div class="modal-footer">

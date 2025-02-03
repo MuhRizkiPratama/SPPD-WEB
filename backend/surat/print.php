@@ -14,7 +14,7 @@
         if ($result && mysqli_num_rows($result) > 0) {
             $data = mysqli_fetch_assoc($result);
 
-            $template_surat = '../../assets/template_surat/SPPD.docx';
+            $template_surat = '../../assets/template surat/SPPD.docx';
 
             if (file_exists($template_surat)) {
                 $template = new \PhpOffice\PhpWord\TemplateProcessor($template_surat);
@@ -33,15 +33,56 @@
                 $template->setValue('pemberi_perintah', $data['pemberi_perintah']);
                 $template->setValue('laporan_perjalanan', $data['laporan_perjalanan']);
                 $template->setValue('hari', $data['jumlah_hari']);
-                $template->setValue('malam', $data['jumlah_malam']);
                 $template->setValue('uang_saku', $data['uang_saku']);
                 $template->setValue('total_uang_saku', $total_uang_saku);
-                $template->setValue('biaya_penginapan_ls', $data['biaya_penginapan_ls']);
                 $template->setValue('biaya_penginapan', $data['biaya_penginapan']);
                 $template->setValue('biaya_bahan_bakar', $data['biaya_bahan_bakar']);
                 $template->setValue('biaya_tol', $data['biaya_tol']);
                 $template->setValue('biaya_lain', $data['biaya_lain']);
-                $template->setValue('total_biaya', $data['total_biaya']);
+
+                if (!empty($data['bukti_penginapan']) && file_exists($data['bukti_penginapan'])) {
+                    $template->setImageValue('bukti_penginapan', [
+                        'path' => $data['bukti_penginapan'],
+                        'width' => 500, 
+                        'height' => 350, 
+                        'ratio' => true 
+                    ]);
+                } else {
+                    $template->setValue('bukti_penginapan', '');
+                }
+
+                if (!empty($data['bukti_tol']) && file_exists($data['bukti_tol'])) {
+                    $template->setImageValue('bukti_tol', [
+                        'path' => $data['bukti_tol'],
+                        'width' => 500, 
+                        'height' => 350, 
+                        'ratio' => true 
+                    ]);
+                } else {
+                    $template->setValue('bukti_tol', '');
+                }
+
+                if (!empty($data['bukti_bahan_bakar']) && file_exists($data['bukti_bahan_bakar'])) {
+                    $template->setImageValue('bukti_bahan_bakar', [
+                        'path' => $data['bukti_bahan_bakar'],
+                        'width' => 500, 
+                        'height' => 350, 
+                        'ratio' => true 
+                    ]);
+                } else {
+                    $template->setValue('bukti_bahan_bakar', '');
+                }
+
+                if (!empty($data['bukti_lain']) && file_exists($data['bukti_lain'])) {
+                    $template->setImageValue('bukti_lain', [
+                        'path' => $data['bukti_lain'],
+                        'width' => 500, 
+                        'height' => 350, 
+                        'ratio' => true 
+                    ]);
+                } else {
+                    $template->setValue('bukti_lain', '');
+                }
 
                 $file_surat = "surat_sppd_{$id_sppd}.docx";
 

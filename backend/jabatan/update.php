@@ -13,7 +13,7 @@
             $_SESSION['success'] = "Data jabatan berhasil diedit.";
             header("Location:../../pages/master_pegawai/jabatan.php");
         } else {
-            $_SESSION['success'] = "Data jabatan gagal diedit.";
+            $_SESSION['failed'] = "Data jabatan gagal diedit.";
             header("Location:../../pages/master_pegawai/jabatan.php");
         }
     }

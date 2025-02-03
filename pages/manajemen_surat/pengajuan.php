@@ -14,9 +14,28 @@
                 <img src="../../assets/images/Logo Kikc.png" alt="logo kikc" width="100" height="40">
                 <h5 class="text-center">Form Pengajuan Surat Perintah Perjalanan Dinas</h5>
             </div>
+
+            <!-- Alert Berhasil -->
+            <?php if(isset($_SESSION['success'])): ?>
+                <div class="alert alert-success" role="alert" id="alert-messages">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <?= $_SESSION['success']; ?>
+                </div>
+                <?php unset($_SESSION['success']); ?>
+            <?php endif; ?>
+            
+            <!-- Alert Gagal -->
+            <?php if(isset($_SESSION['failed'])): ?>
+                <div class="alert alert-danger" role="alert" id="alert-messages">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    <?= $_SESSION['failed']; ?>
+                </div>
+                <?php unset($_SESSION['failed']); ?>
+            <?php endif; ?>
+            
             <div class="card w-75">
                 <div class="card-body shadow">
-                    <form action="../../backend/surat/create.php" method="post">
+                    <form action="../../backend/surat/create.php" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-lg-6">
                                 <p class="fw-semibold">Ditugaskan Kepada:</p>
@@ -66,20 +85,6 @@
                                 </div>
                             </div>
                             <hr class="border border-dark">
-
-                            <div class="row">
-                                <p class="fw-semibold text-center">Lama Perjalanan:</p>
-                                <div class="col-lg-6 mb-3">
-                                    <label class="form-label" for="jumlah_hari">Jumlah Hari:</label>
-                                    <input class="form-control" type="number" name="jumlah_hari" id="jumlah_hari">
-                                </div>
-                                <div class="col-lg-6 mb-3">
-                                    <label class="form-label" for="jumlah_malam">Jumlah Malam:</label>
-                                    <input class="form-control" type="number" name="jumlah_malam" id="jumlah_malam">
-                                </div>
-                            </div>
-                            <hr class="border border-dark">
-
                             <div class="col-lg-12">
                                 <p class="text-center fw-semibold">Laporan Perjalanan Dinas:</p>
                                 <div class="mb-3">
@@ -89,35 +94,46 @@
                             </div>
                             <hr class="border border-dark">
     
-                            <div class="col-lg-6">
-                                <p class="fw-semibold">Perhitungan Biaya:</p>
-                                <div class="lumpsum">
-                                    <p class="fw-semibold">I. BIAYA LUMPSUM</p>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="biaya_penginapan_ls">Penginapan:</label>
-                                        <input class="form-control" type="number" name="biaya_penginapan_ls" id="biaya_penginapan_ls">
-                                    </div>
-                                </div>
-                                <div class="biaya_at_cost">
-                                    <p class="fw-semibold">II. BIAYA AT-COST</p>
+                            <div class="row">
+                                <p class="text-center fw-semibold">Biaya At Cost:</p>
+                                <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="biaya_penginapan">Biaya Penginapan:</label>
-                                        <input class="form-control" type="number" name="biaya_penginapan" id="biaya_penginapan">
+                                        <input class="form-control" type="number" name="biaya_penginapan" id="biaya_penginapan" value="0">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="biaya_tol">Biaya Tol:</label>
-                                        <input class="form-control" type="number" name="biaya_tol" id="biaya_tol">
+                                        <input class="form-control" type="number" name="biaya_tol" id="biaya_tol" value="0">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="biaya_bahan_bakar">Biaya Bahan Bakar:</label>
-                                        <input class="form-control" type="number" name="biaya_bahan_bakar" id="biaya_bahan_bakar">
+                                        <input class="form-control" type="number" name="biaya_bahan_bakar" id="biaya_bahan_bakar" value="0">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="biaya_lain">Biaya Lain:</label>
-                                        <input class="form-control" type="number" name="biaya_lain" id="biaya_lain">
+                                        <input class="form-control" type="number" name="biaya_lain" id="biaya_lain" value="0">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="bukti_penginapan">Bukti Penginapan:</label>
+                                        <input class="form-control" type="file" name="bukti_penginapan" id="bukti_penginapan">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="bukti_tol">Bukti Tol:</label>
+                                        <input class="form-control" type="file" name="bukti_tol" id="bukti_tol">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="bukti_bahan_bakar">Bukti Bahan Bakar:</label>
+                                        <input class="form-control" type="file" name="bukti_bahan_bakar" id="bukti_bahan_bakar">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="bukti_lain">Bukti Lain:</label>
+                                        <input class="form-control" type="file" name="bukti_lain" id="bukti_lain">
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                         <button class="btn fw-semibold btn-primary w-100" type="submit" name="create_surat">Ajukan Surat</button>
                     </form>

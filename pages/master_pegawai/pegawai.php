@@ -80,6 +80,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
+                                                    <input type="hidden" name="id_pegawai" value="<?= $pegawai['id_pegawai']; ?>">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="no_badge">No Badge:</label>
                                                         <input class="form-control" type="text" name="no_badge" id="no_badge" value="<?= $pegawai['no_badge']; ?>" required>
@@ -95,32 +96,6 @@
                                                     <div class="mb-3">
                                                         <label class="form-label" for="uang_saku">Uang Saku:</label>
                                                         <input class="form-control" type="number" name="uang_saku" id="uang_saku" value="<?= $pegawai['uang_saku']; ?>" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="jabatan">Jabatan:</label>
-                                                        <select class="form-select" name="id_jabatan" id="jabatan" required>
-                                                            <option disabled selected></option>
-                                                            <?php
-                                                                $select_jabatan = "SELECT * FROM jabatan";
-                                                                $result_jabatan = mysqli_query($database, $select_jabatan);
-                                                                while ($jabatan = mysqli_fetch_assoc($result_jabatan)){
-                                                                    echo "<option value=$jabatan[id_jabatan]>$jabatan[nama_jabatan]</option>";
-                                                                }
-                                                            ?>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="unit_kerja">Unit Kerja :</label>
-                                                        <select class="form-select" name="id_unit_kerja" id="unit_kerja" required>
-                                                            <option disabled selected></option>
-                                                            <?php
-                                                                $select_unit_kerja = "SELECT * FROM unit_kerja";
-                                                                $result_unit_kerja = mysqli_query($database, $select_unit_kerja);
-                                                                while ($unit_kerja = mysqli_fetch_assoc($result_unit_kerja)){
-                                                                    echo "<option value=$unit_kerja[id_unit_kerja]>$unit_kerja[nama_unit_kerja]</option>";
-                                                                }
-                                                            ?>
-                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">

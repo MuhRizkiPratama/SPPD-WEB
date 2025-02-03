@@ -37,7 +37,15 @@
                                 <tr>
                                     <td><?= $no++ ?></td>
                                     <td><?= $riwayat['tanggal_pengajuan']; ?></td>
-                                    <td><?= $riwayat['status_pengajuan']; ?></td>
+                                    <td class="text-center">
+                                        <?php if($riwayat['status_pengajuan'] == 'Disetujui'){ ?>
+                                            <span class="badge text-bg-success"><?= $riwayat['status_pengajuan']; ?></span>
+                                        <?php } elseif ($riwayat['status_pengajuan'] == 'Ditolak'){ ?>
+                                            <span class="badge text-bg-danger"><?= $riwayat['status_pengajuan']; ?></span>
+                                        <?php } elseif ($riwayat['status_pengajuan'] == 'Pending'){ ?>
+                                            <span class="badge text-bg-warning"><?= $riwayat['status_pengajuan']; ?></span>
+                                        <?php }; ?>
+                                    </td>
                                     <td><?= $riwayat['keterangan']; ?></td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#dataSppd<?= $riwayat['id_pengajuan']; ?>">
@@ -62,7 +70,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="d-flex justify-content-between">
+                                            <div class="d-flex justify-content-between">
                                                     <p class="fw-semibold">No Badge:</p>
                                                     <p><?= $riwayat['no_badge']; ?></p>
                                                 </div>
@@ -98,11 +106,6 @@
                                                 </div>
                                                 <hr>
                                                 <div class="d-flex justify-content-between">
-                                                    <p class="fw-semibold">Jumlah Malam:</p>
-                                                    <p><?= $riwayat['jumlah_malam']; ?></p>
-                                                </div>
-                                                <hr>
-                                                <div class="d-flex justify-content-between">
                                                     <p class="fw-semibold">Tanggal Berangkat:</p>
                                                     <p><?= $riwayat['tanggal_berangkat']; ?></p>
                                                 </div>
@@ -125,11 +128,6 @@
                                                 <div class="d-flex justify-content-between">
                                                     <p class="fw-semibold">Laporan Perjalanan:</p>
                                                     <p><?= $riwayat['laporan_perjalanan']; ?></p>
-                                                </div>
-                                                <hr>
-                                                <div class="d-flex justify-content-between">
-                                                    <p class="fw-semibold">Biaya Penginapan Lumpsum:</p>
-                                                    <p><?= $riwayat['biaya_penginapan_ls']; ?></p>
                                                 </div>
                                                 <hr>
                                                 <div class="d-flex justify-content-between">
@@ -156,6 +154,26 @@
                                                     <p class="fw-semibold">Total Biaya:</p>
                                                     <p><?= $riwayat['total_biaya']; ?></p>
                                                 </div>
+                                                <hr>
+                                                <div class="d-flex flex-column">
+                                                    <p class="fw-semibold">Bukti Penginapan:</p>
+                                                    <img src="<?= $riwayat['bukti_penginapan']?>">
+                                                </div>
+                                                <hr>
+                                                <div class="d-flex flex-column">
+                                                    <p class="fw-semibold">Bukti Tol:</p>
+                                                    <img src="<?= $riwayat['bukti_tol']?>">
+                                                </div>
+                                                <hr>
+                                                <div class="d-flex flex-column">
+                                                    <p class="fw-semibold">Bukti Bahan Bakar:</p>
+                                                    <img src="<?= $riwayat['bukti_bahan_bakar']?>">
+                                                </div>
+                                                <hr>
+                                                <div class="d-flex flex-column">
+                                                    <p class="fw-semibold">Bukti Lain:</p>
+                                                    <img src="<?= $riwayat['bukti_lain']?>">
+                                                </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -167,7 +185,7 @@
                                 <!-- Modal Revisi Pengajuan -->
                                 <div class="modal fade" id="revisi<?= $riwayat['id_pengajuan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <form action="../../backend/surat/revisi.php" method="post">
+                                        <form action="../../backend/surat/revisi.php" method="post" enctype="multipart/form-data">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Revisi Pengajuan</h1>
@@ -176,6 +194,7 @@
                                                 <div class="modal-body">
                                                     <input type="hidden" name="id_riwayat" value="<?= $riwayat['id_riwayat']; ?>">
                                                     <input type="hidden" name="id_pengajuan" value="<?= $riwayat['id_pengajuan']; ?>">
+                                                    <input type="hidden" name="uang_saku" value="<?= $riwayat['uang_saku']; ?>">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="tujuan">Tujuan:</label>
                                                         <input class="form-control" type="text" id="tujuan" name="tujuan" value="<?= $riwayat['tujuan']; ?>" required>
@@ -197,20 +216,8 @@
                                                         <input class="form-control" id="pemberi_perintah" name="pemberi_perintah" value="<?= $riwayat['pemberi_perintah']; ?>" required>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="jumlah_hari">Jumlah Hari:</label>
-                                                        <input class="form-control" type="number" id="jumlah_hari" name="jumlah_hari" value="<?= $riwayat['jumlah_hari']; ?>" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="jumlah_malam">Jumlah Malam:</label>
-                                                        <input class="form-control" type="number" id="jumlah_malam" name="jumlah_malam" value="<?= $riwayat['jumlah_malam']; ?>" required>
-                                                    </div>
-                                                    <div class="mb-3">
                                                         <label class="form-label" for="laporan_perjalanan">Laporan:</label>
                                                         <input class="form-control" type="text" name="laporan_perjalanan" id="laporan_perjalanan" value="<?= $riwayat['laporan_perjalanan']; ?>" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="biaya_penginapan_ls">Penginapan:</label>
-                                                        <input class="form-control" type="number" name="biaya_penginapan_ls" id="biaya_penginapan_ls" value="<?= $riwayat['biaya_penginapan_ls']; ?>" required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label" for="biaya_penginapan">Biaya Penginapan:</label>
@@ -227,6 +234,22 @@
                                                     <div class="mb-3">
                                                         <label class="form-label" for="biaya_lain">Biaya Lain:</label>
                                                         <input class="form-control" type="number" name="biaya_lain" id="biaya_lain" value="<?= $riwayat['biaya_lain']; ?>" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="bukti_penginapan">Bukti Penginapan:</label>
+                                                        <input class="form-control" type="file" name="bukti_penginapan" id="bukti_penginapan">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="bukti_tol">Bukti Tol:</label>
+                                                        <input class="form-control" type="file" name="bukti_tol" id="bukti_tol">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="bukti_bahan_bakar">Bukti Bahan Bakar:</label>
+                                                        <input class="form-control" type="file" name="bukti_bahan_bakar" id="bukti_bahan_bakar">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="bukti_lain">Bukti Lain:</label>
+                                                        <input class="form-control" type="file" name="bukti_lain" id="bukti_lain">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">

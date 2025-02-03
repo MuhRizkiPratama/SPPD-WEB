@@ -26,7 +26,6 @@
 
                 $_SESSION['success'] = "Data admin berhasil ditambahkan.";
                 header("Location: ../../pages/users/admin.php");
-                exit();
             } else {
                 $_SESSION['failed'] = "Data Admin Gagal Ditambahkan.";
                 header("Location: ../../pages/users/admin.php");

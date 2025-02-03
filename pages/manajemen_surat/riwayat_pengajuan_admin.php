@@ -39,7 +39,15 @@
                                     <td><?= $riwayat['no_badge']; ?></td>
                                     <td><?= $riwayat['nama_pegawai']; ?></td>
                                     <td><?= $riwayat['tanggal_pengajuan']; ?></td>
-                                    <td><?= $riwayat['status_pengajuan']; ?></td>
+                                    <td class="text-center">
+                                        <?php if($riwayat['status_pengajuan'] == 'Disetujui'){ ?>
+                                            <span class="badge text-bg-success"><?= $riwayat['status_pengajuan']; ?></span>
+                                        <?php } elseif ($riwayat['status_pengajuan'] == 'Ditolak'){ ?>
+                                            <span class="badge text-bg-danger"><?= $riwayat['status_pengajuan']; ?></span>
+                                        <?php } elseif ($riwayat['status_pengajuan'] == 'Pending'){ ?>
+                                            <span class="badge text-bg-warning"><?= $riwayat['status_pengajuan']; ?></span>
+                                        <?php }; ?>
+                                    </td>
                                     <td><?= $riwayat['keterangan']; ?></td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#dataSppd<?= $riwayat['id_pengajuan']; ?>">
@@ -48,7 +56,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center gap-2">
-                                            <?php if ($riwayat['status_pengajuan'] !== 'Disetujui' && $riwayat['status_pengajuan'] !== 'Ditolak') { ?>
+                                            <?php if($riwayat['status_pengajuan'] !== 'Disetujui' && $riwayat['status_pengajuan'] !== 'Ditolak') { ?>
                                                 <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#disetujui<?= $riwayat['id_riwayat']; ?>">
                                                     <i class="bi bi-check-circle"></i> Disetujui
                                                 </button>
@@ -105,11 +113,6 @@
                                                 </div>
                                                 <hr>
                                                 <div class="d-flex justify-content-between">
-                                                    <p class="fw-semibold">Jumlah Malam:</p>
-                                                    <p><?= $riwayat['jumlah_malam']; ?></p>
-                                                </div>
-                                                <hr>
-                                                <div class="d-flex justify-content-between">
                                                     <p class="fw-semibold">Tanggal Berangkat:</p>
                                                     <p><?= $riwayat['tanggal_berangkat']; ?></p>
                                                 </div>
@@ -135,11 +138,6 @@
                                                 </div>
                                                 <hr>
                                                 <div class="d-flex justify-content-between">
-                                                    <p class="fw-semibold">Biaya Penginapan Lumpsum:</p>
-                                                    <p><?= $riwayat['biaya_penginapan_ls']; ?></p>
-                                                </div>
-                                                <hr>
-                                                <div class="d-flex justify-content-between">
                                                     <p class="fw-semibold">Biaya Penginapan:</p>
                                                     <p><?= $riwayat['biaya_penginapan']; ?></p>
                                                 </div>
@@ -162,6 +160,26 @@
                                                 <div class="d-flex justify-content-between">
                                                     <p class="fw-semibold">Total Biaya:</p>
                                                     <p><?= $riwayat['total_biaya']; ?></p>
+                                                </div>
+                                                <hr>
+                                                <div class="d-flex flex-column">
+                                                    <p class="fw-semibold">Bukti Penginapan:</p>
+                                                    <img src="<?= $riwayat['bukti_penginapan']?>">
+                                                </div>
+                                                <hr>
+                                                <div class="d-flex flex-column">
+                                                    <p class="fw-semibold">Bukti Tol:</p>
+                                                    <img src="<?= $riwayat['bukti_tol']?>">
+                                                </div>
+                                                <hr>
+                                                <div class="d-flex flex-column">
+                                                    <p class="fw-semibold">Bukti Bahan Bakar:</p>
+                                                    <img src="<?= $riwayat['bukti_bahan_bakar']?>">
+                                                </div>
+                                                <hr>
+                                                <div class="d-flex flex-column">
+                                                    <p class="fw-semibold">Bukti Lain:</p>
+                                                    <img src="<?= $riwayat['bukti_lain']?>">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">

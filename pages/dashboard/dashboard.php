@@ -1,10 +1,10 @@
 <?php
     require "../layout/header.php";
 
-    // if($_SESSION['role'] != 'admin' || 'pegawai'){
-    //     header("Location:../../index.php");
-    //     exit();
-    // }
+    if ($_SESSION['role'] != 'admin' && $_SESSION['role'] != 'pegawai') {
+        header("Location: ../../index.php");
+        exit();
+    }
 ?> 
     <main>
         <div class="container">

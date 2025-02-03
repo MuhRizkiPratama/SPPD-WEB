@@ -25,15 +25,13 @@
             $sheet->setCellValue('I1', 'Tugas');
             $sheet->setCellValue('J1', 'Laporan Perjalanan');
             $sheet->setCellValue('K1', 'Jumlah Hari');
-            $sheet->setCellValue('L1', 'Jumlah Malam');
-            $sheet->setCellValue('M1', 'Uang Saku');
-            $sheet->setCellValue('N1', 'Total Uang Saku');
-            $sheet->setCellValue('O1', 'Biaya Penginapan LS');
-            $sheet->setCellValue('P1', 'Biaya Penginapan');
-            $sheet->setCellValue('Q1', 'Biaya Bahan Bakar');
-            $sheet->setCellValue('R1', 'Biaya Tol');
-            $sheet->setCellValue('S1', 'Biaya Lain');
-            $sheet->setCellValue('T1', 'Total Biaya');
+            $sheet->setCellValue('L1', 'Uang Saku');
+            $sheet->setCellValue('M1', 'Total Uang Saku');
+            $sheet->setCellValue('N1', 'Biaya Penginapan');
+            $sheet->setCellValue('P1', 'Biaya Bahan Bakar');
+            $sheet->setCellValue('Q1', 'Biaya Tol');
+            $sheet->setCellValue('R1', 'Biaya Lain');
+            $sheet->setCellValue('S1', 'Total Biaya');
 
             $rowNumber = 2;
             while ($sppd = mysqli_fetch_assoc($result_sppd)) {
@@ -50,15 +48,13 @@
                 $sheet->setCellValue('I' . $rowNumber, $sppd['tugas']);
                 $sheet->setCellValue('J' . $rowNumber, $sppd['laporan_perjalanan']);
                 $sheet->setCellValue('K' . $rowNumber, $sppd['jumlah_hari']);
-                $sheet->setCellValue('L' . $rowNumber, $sppd['jumlah_malam']);
-                $sheet->setCellValue('M' . $rowNumber, $sppd['uang_saku']);
-                $sheet->setCellValue('N' . $rowNumber, $total_uang_saku);
-                $sheet->setCellValue('O' . $rowNumber, $sppd['biaya_penginapan_ls']);
-                $sheet->setCellValue('P' . $rowNumber, $sppd['biaya_penginapan']);
-                $sheet->setCellValue('Q' . $rowNumber, $sppd['biaya_bahan_bakar']);
-                $sheet->setCellValue('R' . $rowNumber, $sppd['biaya_tol']);
-                $sheet->setCellValue('S' . $rowNumber, $sppd['biaya_lain']);
-                $sheet->setCellValue('T' . $rowNumber, $sppd['total_biaya']);
+                $sheet->setCellValue('L' . $rowNumber, $sppd['uang_saku']);
+                $sheet->setCellValue('M' . $rowNumber, $total_uang_saku);
+                $sheet->setCellValue('N' . $rowNumber, $sppd['biaya_penginapan']);
+                $sheet->setCellValue('P' . $rowNumber, $sppd['biaya_bahan_bakar']);
+                $sheet->setCellValue('Q' . $rowNumber, $sppd['biaya_tol']);
+                $sheet->setCellValue('R' . $rowNumber, $sppd['biaya_lain']);
+                $sheet->setCellValue('S' . $rowNumber, $sppd['total_biaya']);
                 $rowNumber++;
             }
 
