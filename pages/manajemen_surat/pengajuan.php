@@ -65,23 +65,23 @@
                                 <p class="fw-semibold">Waktu dan Tugas:</p>
                                 <div class="mb-3">
                                     <label class="form-label" for="tujuan">Tujuan:</label>
-                                    <input class="form-control" type="text" name="tujuan" id="tujuan">
+                                    <input class="form-control" type="text" name="tujuan" id="tujuan" required>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="tanggal_berangkat">Tanggal Berangkat:</label>
-                                    <input class="form-control" type="date" name="tanggal_berangkat" id="tanggal_berangkat">
+                                    <input class="form-control" type="date" name="tanggal_berangkat" id="tanggal_berangkat" required>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="tanggal_kembali">Tanggal Kembali:</label>
-                                    <input class="form-control" type="date" name="tanggal_kembali" id="tanggal_kembali">
+                                    <input class="form-control" type="date" name="tanggal_kembali" id="tanggal_kembali" required>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="Tugas">Tugas:</label>
-                                    <input class="form-control" type="text" name="tugas" id="tugas">
+                                    <input class="form-control" type="text" name="tugas" id="tugas" required>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="pemberi_perintah">Pemberi Perintah:</label>
-                                    <input class="form-control" type="text" name="pemberi_perintah" id="pemberi_perintah">
+                                    <input class="form-control" type="text" name="pemberi_perintah" id="pemberi_perintah" required>
                                 </div>
                             </div>
                             <hr class="border border-dark">
@@ -89,7 +89,7 @@
                                 <p class="text-center fw-semibold">Laporan Perjalanan Dinas:</p>
                                 <div class="mb-3">
                                     <label class="form-label" for="laporan_perjalanan">Laporan:</label>
-                                    <input class="form-control" type="text" name="laporan_perjalanan" id="laporan_perjalanan">
+                                    <input class="form-control" type="text" name="laporan_perjalanan" id="laporan_perjalanan" required>
                                 </div>
                             </div>
                             <hr class="border border-dark">

@@ -75,8 +75,12 @@
                                                     <input class="form-control" type="email" name="email" id="email" value="<?= $admin['email']?>" required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label" for="nama_admin">Password:</label>
-                                                    <input class="form-control" type="password" name="password" id="password" required>
+                                                    <label class="form-label" for="password_lama">Password Lama:</label>
+                                                    <input class="form-control" type="password" name="password_lama" id="password_lama" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="password_baru">Password Baru:</label>
+                                                    <input class="form-control" type="password" name="password_baru" id="password_baru">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">

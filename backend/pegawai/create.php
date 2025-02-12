@@ -15,6 +15,7 @@
         if(mysqli_num_rows($check_no_badge) > 0){
             $_SESSION['failed'] = "No badge sudah digunakan, Silahkan menggunakan no badge yang lain.";
             header("Location:../../pages/master_pegawai/pegawai.php");
+            exit();
         } else {
             $create_pegawai = mysqli_query($database, "INSERT INTO pegawai (no_badge, tanggal_lahir, nama_pegawai, uang_saku, id_jabatan, id_unit_kerja) VALUES ('$no_badge', '$tanggal_lahir', '$nama_pegawai', '$uang_saku', '$jabatan', '$unit_kerja')");
         
@@ -26,13 +27,16 @@
                 if ($create_users){
                     $_SESSION['success'] = "Data users pegawai berhasil ditambahkan.";
                     header("Location:../../pages/master_pegawai/pegawai.php");
+                    exit();
                 } else {
-                    $_SESSION['failed'] = "Gagal menambahkan data users pegawai";
+                    $_SESSION['failed'] = "Data users pegawai gagal ditambahkan.";
                     header("Location:../../pages/master_pegawai/pegawai.php");
+                    exit();
                 }
             } else{
                 $_SESSION['failed'] = "Gagal menambahkan data pegawai";
                 header("Location:../../pages/master_pegawai/pegawai.php");
+                exit();
             }
         }
     }

@@ -3,6 +3,9 @@
     require "../../vendor/autoload.php";
 
     use PhpOffice\PhpWord\TemplateProcessor;
+    use PhpOffice\PhpWord\IOFactory;
+    use Mpdf\Mpdf;
+    use PhpOffice\PhpWord\Settings;
 
     if(isset($_POST['print'])) {
         $id_sppd = $_POST['id_sppd']; 
@@ -17,7 +20,7 @@
             $template_surat = '../../assets/template surat/SPPD.docx';
 
             if (file_exists($template_surat)) {
-                $template = new \PhpOffice\PhpWord\TemplateProcessor($template_surat);
+                $template = new TemplateProcessor($template_surat);
 
                 $total_uang_saku = $data['jumlah_hari'] * $data['uang_saku'];
 
@@ -39,66 +42,58 @@
                 $template->setValue('biaya_bahan_bakar', $data['biaya_bahan_bakar']);
                 $template->setValue('biaya_tol', $data['biaya_tol']);
                 $template->setValue('biaya_lain', $data['biaya_lain']);
+                $template->setValue('total_biaya', $data['total_biaya']);
 
-                if (!empty($data['bukti_penginapan']) && file_exists($data['bukti_penginapan'])) {
-                    $template->setImageValue('bukti_penginapan', [
-                        'path' => $data['bukti_penginapan'],
-                        'width' => 500, 
-                        'height' => 350, 
-                        'ratio' => true 
-                    ]);
-                } else {
-                    $template->setValue('bukti_penginapan', '');
+                $file_bukti = [
+                    'bukti_penginapan' => $data['bukti_penginapan'],
+                    'bukti_tol' => $data['bukti_tol'],
+                    'bukti_bahan_bakar' => $data['bukti_bahan_bakar'],
+                    'bukti_lain' => $data['bukti_lain']
+                ];
+    
+                foreach ($file_bukti as $key => $file) {
+                    if (!empty($file) && file_exists($file)) {
+                        $template->setImageValue($key, [
+                            'path' => $file,
+                            'width' => 500,
+                            'height' => 350,
+                            'ratio' => true
+                        ]);
+                    } else {
+                        $template->setValue($key, '');
+                    }
                 }
 
-                if (!empty($data['bukti_tol']) && file_exists($data['bukti_tol'])) {
-                    $template->setImageValue('bukti_tol', [
-                        'path' => $data['bukti_tol'],
-                        'width' => 500, 
-                        'height' => 350, 
-                        'ratio' => true 
-                    ]);
-                } else {
-                    $template->setValue('bukti_tol', '');
-                }
+                $no_surat = str_replace('/', '.', $data['no_surat']);
+                $file_surat = "../../assets/sppd/sppd_({$no_surat}).docx";
+                $file_pdf = "../../assets/sppd/sppd_{$no_surat}.pdf";
 
-                if (!empty($data['bukti_bahan_bakar']) && file_exists($data['bukti_bahan_bakar'])) {
-                    $template->setImageValue('bukti_bahan_bakar', [
-                        'path' => $data['bukti_bahan_bakar'],
-                        'width' => 500, 
-                        'height' => 350, 
-                        'ratio' => true 
-                    ]);
-                } else {
-                    $template->setValue('bukti_bahan_bakar', '');
-                }
+                $template->saveAs($file_surat);
 
-                if (!empty($data['bukti_lain']) && file_exists($data['bukti_lain'])) {
-                    $template->setImageValue('bukti_lain', [
-                        'path' => $data['bukti_lain'],
-                        'width' => 500, 
-                        'height' => 350, 
-                        'ratio' => true 
-                    ]);
-                } else {
-                    $template->setValue('bukti_lain', '');
-                }
+                Settings::setPdfRendererName(Settings::PDF_RENDERER_MPDF);
+                Settings::setPdfRendererPath('../../vendor/mpdf/mpdf'); 
 
-                $file_surat = "surat_sppd_{$id_sppd}.docx";
+                $phpWord = IOFactory::load($file_surat);
+                $pdfWriter = IOFactory::createWriter($phpWord, 'PDF');
+                $pdfWriter->save($file_pdf);
 
-                header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-                header('Content-Disposition: attachment; filename="' . $file_surat . '"');
-                header('Cache-Control: max-age=0');
-
-                $template->saveAs('php://output');
-                exit;
+                header('Content-Type: application/pdf');
+                header('Content-Disposition: attachment; filename="' . basename($file_pdf) . '"');
+                readfile($file_pdf);
+                exit();
             } else {
-                echo "Template surat tidak ditemukan.";
+                $_SESSION['failed'] = "Template surat tidak ditemukan.";
+                header("Location:../../pages/manajemen_surat/surat_terverifikasi.php");
+                exit();
             }
         } else {
-            echo "Data SPPD tidak ditemukan.";
+            $_SESSION['failed'] = "Data SPPD tidak ditemukan.";
+            header("Location:../../pages/manajemen_surat/surat_terverifikasi.php");
+            exit();
         }
     } else {
-        echo "Metode request tidak valid.";
+        $_SESSION['failed'] = "Metode request tidak valid.";
+        header("Location:../../pages/manajemen_surat/surat_terverifikasi.php");
+        exit();
     }
 ?>

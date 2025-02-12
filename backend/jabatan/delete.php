@@ -11,9 +11,11 @@
         if ($delete_jabatan){
             $_SESSION['success'] = "Data jabatan berhasil dihapus.";
             header("Location:../../pages/master_pegawai/jabatan.php");
+            exit();
         } else {
             $_SESSION['failed'] = "Data jabatan gagal dihapus.";
             header("Location:../../pages/master_pegawai/jabatan.php");
+            exit();
         }
     }
 ?>

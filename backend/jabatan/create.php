@@ -11,9 +11,11 @@
         if($create_jabatan){
             $_SESSION['success'] = "Data jabatan berhasil ditambahkan.";
             header("Location:../../pages/master_pegawai/jabatan.php");
+            exit();
         } else {
             $_SESSION['failed'] = "Data jabatan gagal ditambahkan.";
             header("Location:../../pages/master_pegawai/jabatan.php");
+            exit();
         }
     }
 ?>

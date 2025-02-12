@@ -109,8 +109,38 @@
                                 <label class="form-label" for="password">Password :</label>
                                 <input class="form-control" type="password" id="password" name="password" required>
                             </div>
-                            <div class="mb-3">
+                            <button type="button" class="btn btn-sm text-decoration-underline w-100" data-bs-toggle="modal" data-bs-target="#lupaPassword">
+                            Lupa Password?
+                            </button>
+                            <div class="mt-3 mb-3">
                                 <button type="submit" name="login_admin" class="fw-semibold btn btn-success main-background text-light w-100 main-background">Login</button>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Lupa Password-->
+        <div class="modal modal-sm fade" id="lupaPassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="backend/autentifikasi/reset_password.php">
+                            <div class="d-flex justify-content-center align-items-center flex-column gap-2">
+                                <img src="assets/images/Logo Kikc.png" alt="logo kikc" width="100" height="40">
+                                <h5 class="text-center">Surat Perintah Perjalanan Dinas</h5>
+                                <p class="text-center">Enter Your Email To Reset Password</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="email">Email :</label>
+                                <input class="form-control" type="email" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" name="reset_password" class="fw-semibold btn btn-success main-background text-light w-100 main-background">Reset Password</button>
                             </div>
                         </form> 
                     </div>

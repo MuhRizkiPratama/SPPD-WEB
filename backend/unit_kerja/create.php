@@ -11,9 +11,11 @@
         if($create_unit_kerja){
             $_SESSION['success'] = "Data unit kerja berhasil ditambahkan.";
             header("Location:../../pages/master_pegawai/unit_kerja.php");
+            exit();
         } else {
             $_SESSION['failed'] = "Data unit kerja gagal ditambahkan.";
             header("Location:../../pages/master_pegawai/unit_kerja.php");
+            exit();
         }
     }
 ?>

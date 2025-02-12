@@ -11,9 +11,11 @@
         if ($delete_unit_kerja) {
             $_SESSION['success'] = "Data unit kerja berhasil dihapus.";
             header("Location:../../pages/master_pegawai/unit_kerja.php");
+            exit();
         } else {
             $_SESSION['failed'] = "Data unit kerja berhasil dihapus.";
             header("Location:../../pages/master_pegawai/unit_kerja.php");
+            exit();
         }
     }
 ?>

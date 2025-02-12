@@ -65,9 +65,11 @@
         if ($update_pengajuan && $update_status) {
             $_SESSION['success'] = "SPPD berhasil diajukan."; "Pengajuan berhasil diupdate";
             header("Location:../../pages/manajemen_surat/riwayat_pengajuan_pegawai.php");
+            exit();
         } else {
             $_SESSION['failed'] = "SPPD berhasil diajukan.";echo "Pengajuan Gagal diupdate";
             header("Location:../../pages/manajemen_surat/riwayat_pengajuan_pegawai.php");
+            exit();
         }
     }
 ?>

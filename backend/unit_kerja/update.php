@@ -12,9 +12,11 @@
         if ($update_unit_kerja) {
             $_SESSION['success'] = "Data unit kerja berhasil diedit.";
             header("Location:../../pages/master_pegawai/unit_kerja.php");
+            exit();
         } else {
             $_SESSION['failed'] = "Data unit kerja gagal diedit.";
             header("Location:../../pages/master_pegawai/unit_kerja.php");
+            exit();
         }
     }
 ?>

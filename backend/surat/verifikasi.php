@@ -1,12 +1,14 @@
 <?php
     require "../../config/connection.php";
+    session_start();
 
     if(isset($_POST['disetujui'])){
+        $id_verifikator = $_SESSION['id_admin'];
         $id_riwayat = $_POST['id_riwayat'];
         $status = $_POST['status'];
         $keterangan = $_POST['keterangan'];
 
-        $verifikasi_disetujui = mysqli_query($database, "UPDATE riwayat_pengajuan SET status_pengajuan = '$status', keterangan = '$keterangan' WHERE id_riwayat = '$id_riwayat'");
+        $verifikasi_disetujui = mysqli_query($database, "UPDATE riwayat_pengajuan SET id_verifikator = '$id_verifikator', status_pengajuan = '$status', keterangan = '$keterangan' WHERE id_riwayat = '$id_riwayat'");
 
         if($verifikasi_disetujui){
             $tanggal = date('Y-m-d H:i:s');
@@ -24,6 +26,7 @@
 
             $insert_surat_terverifikasi = mysqli_query($database, "INSERT INTO sppd_terverifikasi (id_pengajuan, no_surat) SELECT id_pengajuan, '$no_surat' FROM riwayat_pengajuan WHERE id_riwayat = '$id_riwayat'");
             header('Location: ../../pages/manajemen_surat/riwayat_pengajuan_admin.php');
+            exit();
         }
     }
     
@@ -32,10 +35,11 @@
         $status = $_POST['status'];
         $keterangan = $_POST['keterangan'];
 
-        $verifikasi_ditolak = mysqli_query($database, "UPDATE riwayat_pengajuan SET status_pengajuan = '$status', keterangan = '$keterangan' WHERE id_riwayat = '$id_riwayat'");
+        $verifikasi_ditolak = mysqli_query($database, "UPDATE riwayat_pengajuan SET id_verifikator = '$id_verifikator', status_pengajuan = '$status', keterangan = '$keterangan' WHERE id_riwayat = '$id_riwayat'");
 
         if($verifikasi_ditolak){
             header('Location: ../../pages/manajemen_surat/riwayat_pengajuan_admin.php');
+            exit();
         }
     }
 ?>

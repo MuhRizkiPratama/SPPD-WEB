@@ -15,9 +15,11 @@
         if ($update_pegawai) {
             $_SESSION['success'] = "Data pegawai berhasil diedit.";
             header("Location:../../pages/master_pegawai/pegawai.php");
+            exit();
         } else {
             $_SESSION['failed'] = "Data pegawai gagal diedit.";
             header("Location:../../pages/master_pegawai/pegawai.php");
+            exit();
         }
     }
 ?>

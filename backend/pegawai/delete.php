@@ -11,9 +11,11 @@
         if ($delete_pegawai) {
             $_SESSION['success'] = "Data pegawai berhasil dihapus.";
             header("Location:../../pages/master_pegawai/pegawai.php");
+            exit();
         } else {
             $_SESSION['failed'] = "Data pegawai gagal dihapus.";
             header("Location:../../pages/master_pegawai/pegawai.php");
+            exit();
         }
     }
 ?>

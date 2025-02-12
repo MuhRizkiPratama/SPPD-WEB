@@ -5,7 +5,6 @@ Sistem Surat Perintah Perjalanan Dinas (SPPD) adalah aplikasi berbasis website y
 1. Pegawai :
 - Mengajukan SPPD.
 - Melihat riwayat pengajuan SPPD.
-- Mengunduh surat SPPD yang telah disetujui.
 
 2. Admin:
 - Mengelola pengajuan SPPD (menerima atau menolak pengajuan).

@@ -12,9 +12,11 @@
         if ($update_jabatan) {
             $_SESSION['success'] = "Data jabatan berhasil diedit.";
             header("Location:../../pages/master_pegawai/jabatan.php");
+            exit();
         } else {
             $_SESSION['failed'] = "Data jabatan gagal diedit.";
             header("Location:../../pages/master_pegawai/jabatan.php");
+            exit();
         }
     }
 ?>

@@ -25,6 +25,7 @@
                                     <th>Tujuan</th>
                                     <th>Tanggal Berangkat</th>
                                     <th>Tanggal Kembali</th>
+                                    <th>Diverifikasi Oleh</th>
                                     <th>Total Biaya</th>
                                     <th>Detail SPPD</th>
                                     <th>Cetak Surat</th>
@@ -33,7 +34,7 @@
                             <tbody>
                                 <?php
                                     $no = 1;
-                                    $select_surat = "SELECT * FROM sppd_terverifikasi LEFT JOIN pengajuan_sppd ON sppd_terverifikasi.id_pengajuan = pengajuan_sppd.id_pengajuan LEFT JOIN pegawai ON pengajuan_sppd.id_pegawai = pegawai.id_pegawai LEFT JOIN jabatan ON pegawai.id_jabatan = jabatan.id_jabatan LEFT JOIN unit_kerja ON pegawai.id_unit_kerja = unit_kerja.id_unit_kerja";
+                                    $select_surat = "SELECT * FROM sppd_terverifikasi LEFT JOIN pengajuan_sppd ON sppd_terverifikasi.id_pengajuan = pengajuan_sppd.id_pengajuan LEFT JOIN riwayat_pengajuan ON pengajuan_sppd.id_pengajuan = riwayat_pengajuan.id_pengajuan LEFT JOIN admin ON riwayat_pengajuan.id_verifikator = admin.id_admin LEFT JOIN pegawai ON pengajuan_sppd.id_pegawai = pegawai.id_pegawai LEFT JOIN jabatan ON pegawai.id_jabatan = jabatan.id_jabatan LEFT JOIN unit_kerja ON pegawai.id_unit_kerja = unit_kerja.id_unit_kerja";
                                     $result_surat = mysqli_query($database, $select_surat);
                                     while($sppd = mysqli_fetch_assoc($result_surat)){
                                 ?>
@@ -46,6 +47,7 @@
                                     <td><?= $sppd['tujuan']; ?></td>
                                     <td><?= $sppd['tanggal_berangkat']; ?></td>
                                     <td><?= $sppd['tanggal_kembali']; ?></td>
+                                    <td><?= $sppd['nama_admin']; ?></td>
                                     <td><?= $sppd['total_biaya']; ?></td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#dataSppd<?= $sppd['id_sppd']; ?>">
@@ -110,11 +112,6 @@
                                             <div class="d-flex justify-content-between">
                                                 <p class="fw-semibold">Jumlah Hari:</p>
                                                 <p><?= $sppd['jumlah_hari']; ?></p>
-                                            </div>
-                                            <hr>
-                                            <div class="d-flex justify-content-between">
-                                                <p class="fw-semibold">Jumlah Malam:</p>
-                                                <p><?= $sppd['jumlah_malam']; ?></p>
                                             </div>
                                             <hr>
                                             <div class="d-flex justify-content-between">

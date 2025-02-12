@@ -22,6 +22,7 @@
                                     <th>Nama Pegawai</th>
                                     <th>Tanggal Pengajuan</th>
                                     <th>Status Pengajuan</th>
+                                    <th>Diverifikasi Oleh</th>
                                     <th>Keterangan</th>
                                     <th>Detail Data SPPD</th>
                                     <th>Verifikasi</th>
@@ -30,7 +31,7 @@
                             <tbody>
                                 <?php
                                     $no = 1;
-                                    $select_riwayat = "SELECT * FROM riwayat_pengajuan JOIN pengajuan_sppd ON riwayat_pengajuan.id_pengajuan = pengajuan_sppd.id_pengajuan LEFT JOIN pegawai ON pengajuan_sppd.id_pegawai = pegawai.id_pegawai LEFT JOIN jabatan ON pegawai.id_jabatan = jabatan.id_jabatan LEFT JOIN unit_kerja ON pegawai.id_unit_kerja = unit_kerja.id_unit_kerja";
+                                    $select_riwayat = "SELECT * FROM riwayat_pengajuan JOIN pengajuan_sppd ON riwayat_pengajuan.id_pengajuan = pengajuan_sppd.id_pengajuan LEFT JOIN admin ON riwayat_pengajuan.id_verifikator = admin.id_admin LEFT JOIN pegawai ON pengajuan_sppd.id_pegawai = pegawai.id_pegawai LEFT JOIN jabatan ON pegawai.id_jabatan = jabatan.id_jabatan LEFT JOIN unit_kerja ON pegawai.id_unit_kerja = unit_kerja.id_unit_kerja";
                                     $result_riwayat = mysqli_query($database, $select_riwayat);
                                     while ($riwayat = mysqli_fetch_assoc($result_riwayat)){
                                 ?>
@@ -48,6 +49,7 @@
                                             <span class="badge text-bg-warning"><?= $riwayat['status_pengajuan']; ?></span>
                                         <?php }; ?>
                                     </td>
+                                    <td><?= $riwayat['nama_admin']; ?></td>
                                     <td><?= $riwayat['keterangan']; ?></td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#dataSppd<?= $riwayat['id_pengajuan']; ?>">

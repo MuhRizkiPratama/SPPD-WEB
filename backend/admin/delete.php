@@ -11,9 +11,11 @@
         if ($delete_admin) {
             $_SESSION['success'] = "Data admin berhasil dihapus.";
             header("Location:../../pages/users/admin.php");
+            exit();
         } else {
-            $_SESSION['failed'] = "Data admin berhasil dihapus.";
+            $_SESSION['failed'] = "Data admin gagal dihapus.";
             header("Location:../../pages/users/admin.php");
+            exit();
         }
     }
 ?>

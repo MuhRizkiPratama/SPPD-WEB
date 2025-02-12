@@ -66,11 +66,15 @@
 
             $writer = new Xlsx($spreadsheet);
             $writer->save('php://output');
-            exit;
+            exit();
         } else {
-            echo "Tidak ada data SPPD yang ditemukan.";
+            $_SESSION['failed'] = "Tidak ada data SPPD yang ditemukan.";
+            header("Location:../../pages/manajemen_surat/surat_terverifikasi.php");
+            exit();
         }
     } else {
-        echo "Metode request tidak valid.";
+        $_SESSION['failed'] = "Metode request tidak valid.";
+        header("Location:../../pages/manajemen_surat/surat_terverifikasi.php");
+        exit();
     }
 ?>

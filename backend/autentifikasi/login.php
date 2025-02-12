@@ -12,19 +12,21 @@
         if(mysqli_num_rows($check_admin) > 0) {
             $user = mysqli_fetch_assoc($check_admin);
             
-            if (password_verify($password, $user['password'])) {
-                
-                $_SESSION['nama_lengkap'] = $user['nama_lengkap'];
+            if(password_verify($password, $user['password'])) {
+
+                $_SESSION['id_admin'] = $user['id_admin'];
                 $_SESSION['role'] = $user['role'];
 
                 header("Location:../../pages/dashboard/dashboard.php");
             } else {
                 $_SESSION['failed'] = "Email Atau Password Salah";
                 header("Location:../../index.php");
+                exit();
             }
         } else {
-            $_SESSION['failed'] = "Users Tidak Ditemukan.";
+            $_SESSION['failed'] = "User tidak ditemukan.";
             header("Location:../../index.php");
+            exit();
         }
     }
 
@@ -39,13 +41,14 @@
     
             $_SESSION['detail_pegawai'] = $user;
             $_SESSION['id_pegawai'] = $user['id_pegawai'];
-            $_SESSION['nama_lengkap'] = $user['pegawai'];
             $_SESSION['role'] = $user['role'];
     
             header("Location:../../pages/dashboard/dashboard.php");
+            exit();
         } else {
-            $_SESSION['failed'] = "Nomor Badge atau Tanggal Lahir Salah.";
+            $_SESSION['failed'] = "Nomor badge atau tanggal lahir salah.";
             header("Location:../../index.php");
+            exit();
         }
     }
 ?>
