@@ -8,11 +8,11 @@ Sistem Surat Perintah Perjalanan Dinas (SPPD) adalah aplikasi berbasis website y
 
 2. Admin:
 - Mengelola pengajuan SPPD (menerima atau menolak pengajuan).
-- Mengelola data pegawai, unit kerja, jabatan, dan lokasi penempatan.
+- Mengelola data pegawai, unit kerja dan jabatan.
 - Mengelola nomor surat otomatis untuk SPPD.
 
 Teknologi yang Digunakan :
 
-Backend: PHP (Native, tanpa framework)
+Backend: PHP (Native)
 Frontend: HTML, CSS (Bootstrap), JavaScript
 Database: MySQL
