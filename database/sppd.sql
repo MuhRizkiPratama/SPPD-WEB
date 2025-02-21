@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 21, 2025 at 07:46 PM
+-- Generation Time: Feb 21, 2025 at 08:05 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.7
 
@@ -41,7 +41,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `password`, `created_at`, `updated_at`) VALUES
-(6, 'Rizki Pratama', 'rizkipratama0550@gmail.com', '$2y$10$zO4y5eHBcEWZwQBar0xjNupVqqKGvGlRj4xinVcxbawW0v7MP6t8a', '2025-02-05 05:20:35', '2025-02-09 16:01:12');
+(6, 'Rizki Pratama', 'rizkipratama0550@gmail.com', '$2y$10$zO4y5eHBcEWZwQBar0xjNupVqqKGvGlRj4xinVcxbawW0v7MP6t8a', '2025-02-05 05:20:35', '2025-02-09 16:01:12'),
+(8, 'Admin KIKC', 'sppdkikc@gmail.com', '$2y$10$Goqr/WtJgOkhA1HTD8O0peIn8Jt9Ub5R8tO39.29ClFBo4UqD49BS', '2025-02-21 20:01:30', '2025-02-21 20:04:03');
 
 -- --------------------------------------------------------
 
@@ -220,7 +221,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_users`, `id_pegawai`, `id_admin`, `role`, `created_at`, `update_at`) VALUES
 (16, NULL, 6, 'admin', '2025-02-05 05:20:35', '2025-02-05 05:20:35'),
 (23, 15, NULL, 'pegawai', '2025-02-21 16:23:41', '2025-02-21 16:23:41'),
-(24, 16, NULL, 'pegawai', '2025-02-21 16:35:08', '2025-02-21 16:35:08');
+(24, 16, NULL, 'pegawai', '2025-02-21 16:35:08', '2025-02-21 16:35:08'),
+(26, NULL, 8, 'admin', '2025-02-21 20:01:30', '2025-02-21 20:01:30');
 
 --
 -- Indexes for dumped tables
@@ -293,7 +295,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_admin` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `jabatan`
@@ -335,7 +337,7 @@ ALTER TABLE `unit_kerja`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_users` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_users` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Constraints for dumped tables
