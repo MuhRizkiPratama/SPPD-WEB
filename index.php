@@ -25,7 +25,7 @@
     </header>
 
     <main>
-        <div class="d-flex flex-column justify-content-center align-items-center gap-2 main-content">
+        <div class="d-flex flex-column justify-content-center align-items-center gap-2">
 
             <!-- Alert Gagal -->
             <?php if(isset($_SESSION['failed'])): ?>

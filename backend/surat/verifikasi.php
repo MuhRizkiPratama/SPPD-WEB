@@ -24,13 +24,14 @@
 
             $no_surat = "$no/SPPD/KIKC/$angka_romawi/$tahun";
 
-            $insert_surat_terverifikasi = mysqli_query($database, "INSERT INTO sppd_terverifikasi (id_pengajuan, no_surat) SELECT id_pengajuan, '$no_surat' FROM riwayat_pengajuan WHERE id_riwayat = '$id_riwayat'");
+            $insert_surat_terverifikasi = mysqli_query($database, "INSERT INTO sppd_terverifikasi (id_riwayat, no_surat) VALUES ('$id_riwayat', '$no_surat')");
             header('Location: ../../pages/manajemen_surat/riwayat_pengajuan_admin.php');
             exit();
         }
     }
     
     if(isset($_POST['ditolak'])){
+        $id_verifikator = $_SESSION['id_admin'];
         $id_riwayat = $_POST['id_riwayat'];
         $status = $_POST['status'];
         $keterangan = $_POST['keterangan'];

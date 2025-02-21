@@ -34,7 +34,7 @@
                             <tbody>
                                 <?php
                                     $no = 1;
-                                    $select_surat = "SELECT * FROM sppd_terverifikasi LEFT JOIN pengajuan_sppd ON sppd_terverifikasi.id_pengajuan = pengajuan_sppd.id_pengajuan LEFT JOIN riwayat_pengajuan ON pengajuan_sppd.id_pengajuan = riwayat_pengajuan.id_pengajuan LEFT JOIN admin ON riwayat_pengajuan.id_verifikator = admin.id_admin LEFT JOIN pegawai ON pengajuan_sppd.id_pegawai = pegawai.id_pegawai LEFT JOIN jabatan ON pegawai.id_jabatan = jabatan.id_jabatan LEFT JOIN unit_kerja ON pegawai.id_unit_kerja = unit_kerja.id_unit_kerja";
+                                    $select_surat = "SELECT * FROM sppd_terverifikasi LEFT JOIN riwayat_pengajuan ON sppd_terverifikasi.id_riwayat = riwayat_pengajuan.id_riwayat LEFT JOIN pengajuan_sppd ON riwayat_pengajuan.id_pengajuan = pengajuan_sppd.id_pengajuan LEFT JOIN admin ON riwayat_pengajuan.id_verifikator = admin.id_admin LEFT JOIN pegawai ON pengajuan_sppd.id_pegawai = pegawai.id_pegawai LEFT JOIN jabatan ON pegawai.id_jabatan = jabatan.id_jabatan LEFT JOIN unit_kerja ON pegawai.id_unit_kerja = unit_kerja.id_unit_kerja";
                                     $result_surat = mysqli_query($database, $select_surat);
                                     while($sppd = mysqli_fetch_assoc($result_surat)){
                                 ?>
