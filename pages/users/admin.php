@@ -1,5 +1,10 @@
 <?php
     require "../layout/header.php";
+
+    if($_SESSION['role'] != 'admin'){
+        session_destroy();
+        header("Location:../../index.php");
+    }
 ?>
     <main>
         <div class="container">

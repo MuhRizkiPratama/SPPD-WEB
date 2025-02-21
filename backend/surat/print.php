@@ -80,6 +80,8 @@
                 header('Content-Type: application/pdf');
                 header('Content-Disposition: attachment; filename="' . basename($file_pdf) . '"');
                 readfile($file_pdf);
+                
+                header("Location:../../pages/manajemen_surat/surat_terverifikasi.php");
                 exit();
             } else {
                 $_SESSION['failed'] = "Template surat tidak ditemukan.";

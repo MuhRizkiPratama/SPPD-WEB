@@ -8,6 +8,25 @@
 ?>
     <main>
         <div class="container">
+            
+            <!-- Alert Berhasil -->
+            <?php if(isset($_SESSION['success'])): ?>
+                <div class="alert alert-success" role="alert" id="alert-messages">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <?= $_SESSION['success']; ?>
+                </div>
+                <?php unset($_SESSION['success']); ?>
+            <?php endif; ?>
+            
+            <!-- Alert Gagal -->
+            <?php if(isset($_SESSION['failed'])): ?>
+                <div class="alert alert-danger" role="alert" id="alert-messages">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    <?= $_SESSION['failed']; ?>
+                </div>
+                <?php unset($_SESSION['failed']); ?>
+            <?php endif; ?>
+
             <div class="card">
                 <div class="card-header">
                     <h5 class="text-center m-0">Riwayat Pengajuan</h5>

@@ -25,6 +25,7 @@
             $no_surat = "$no/SPPD/KIKC/$angka_romawi/$tahun";
 
             $insert_surat_terverifikasi = mysqli_query($database, "INSERT INTO sppd_terverifikasi (id_riwayat, no_surat) VALUES ('$id_riwayat', '$no_surat')");
+            $_SESSION['success'] = "Pengajuan disetujui.";
             header('Location: ../../pages/manajemen_surat/riwayat_pengajuan_admin.php');
             exit();
         }
@@ -39,6 +40,7 @@
         $verifikasi_ditolak = mysqli_query($database, "UPDATE riwayat_pengajuan SET id_verifikator = '$id_verifikator', status_pengajuan = '$status', keterangan = '$keterangan' WHERE id_riwayat = '$id_riwayat'");
 
         if($verifikasi_ditolak){
+            $_SESSION['failed'] = "Pengajuan ditolak.";
             header('Location: ../../pages/manajemen_surat/riwayat_pengajuan_admin.php');
             exit();
         }
